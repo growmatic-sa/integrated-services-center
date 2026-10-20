@@ -7,12 +7,12 @@
 window.SITE = {
   name: { ar: 'مركز الخدمات المتكاملة', en: 'Integrated Services Center' },
   tagline: { ar: 'كل خدماتك .. في مكان واحد', en: 'All your services .. in one place' },
-  // بيانات اتصال وهمية مؤقتة — Temporary placeholder contact details
-  phone: '+966500000000',
-  phoneDisplay: '+966 50 000 0000',
-  unified: '920000000',
-  whatsapp: '966500000000',
-  email: 'info@example.com',
+  // رقم الجوال والواتساب: 0552408287
+  phone: '+966552408287',
+  phoneDisplay: '055 240 8287',
+  unified: '',                 // الرقم الموحد (اتركه فارغاً إن لم يوجد)
+  whatsapp: '966552408287',
+  email: 'info@example.com',   // بريد مؤقت — Placeholder email
   address: { ar: 'الرياض، حي العليا، طريق الملك فهد', en: 'King Fahd Rd, Al Olaya, Riyadh' },
   hours: { ar: 'السبت – الخميس: 9 ص – 10 م', en: 'Sat – Thu: 9 AM – 10 PM' },
   cities: [
@@ -190,7 +190,7 @@ window.CATALOG = {
      خدمات التعقيب — Government Transactions
      ===================================================== */
   taqib: {
-    title: { ar: 'خدمات التعقيب', en: 'Government Transactions (Taqib)' },
+    title: { ar: 'الخدمات العامة', en: 'General Services' },
     categories: [
       {
         id: 'jawazat', icon: 'book-user', img: 'docs-work.jpg',
@@ -209,6 +209,21 @@ window.CATALOG = {
           ['user-plus', 'التفويض الإلكتروني في أبشر', 'Absher E-Authorization', 'إعداد تفويض إلكتروني يتيح متابعة معاملاتك نيابةً عنك.', 'Setting up an e-authorization so we can handle transactions for you.'],
           ['crown', 'الإقامة المميزة', 'Premium Residency', 'التعريف بالشروط وتجهيز طلب الإقامة المميزة.', 'Explaining eligibility and preparing the Premium Residency application.'],
           ['baby', 'تسجيل مواليد المقيمين', 'Registering Residents’ Newborns', 'تسجيل المولود وإضافته في إقامة الوالد.', 'Registering newborns and adding them to the parent’s iqama.']
+        ]
+      },
+      {
+        id: 'delivery', icon: 'truck', img: 'docs-work.jpg',
+        title: { ar: 'خدمات التوصيل', en: 'Delivery Services' },
+        desc: { ar: 'نوصّل أغراضك ومستنداتك ومشاويرك داخل المدينة وبين المدن', en: 'We deliver your items, documents and errands within and between cities' },
+        items: [
+          ['package', 'توصيل الطلبات والأغراض', 'Parcel & Item Delivery', 'استلام أغراضك من أي مكان وتوصيلها لباب البيت أو العمل في نفس اليوم.', 'Picking up your items from anywhere and delivering them to your door the same day.'],
+          ['file-text', 'توصيل المستندات والمعاملات', 'Document Delivery', 'استلام وتسليم المستندات والأوراق الرسمية من الجهات والمكاتب بأمان.', 'Safely collecting and delivering documents and official papers to and from offices.'],
+          ['car', 'توصيل المشاوير', 'Rides & Errands', 'سائق لمشاويرك اليومية: العمل، المستشفى، المطار، والتسوق.', 'A driver for your daily trips: work, hospital, airport and shopping.'],
+          ['bus', 'توصيل الطلاب والمعلمات', 'Student & Teacher Transport', 'اشتراكات شهرية آمنة لتوصيل الطلاب والطالبات والمعلمات للمدارس والجامعات.', 'Safe monthly subscriptions for students and teachers to schools and universities.'],
+          ['plane-landing', 'التوصيل من وإلى المطار', 'Airport Transfers', 'استقبال وتوصيل من وإلى المطار بمواعيد دقيقة.', 'Punctual pick-ups and drop-offs to and from the airport.'],
+          ['map', 'الشحن والتوصيل بين المدن', 'Intercity Shipping', 'شحن وتوصيل الأغراض والطرود بين مدن المملكة.', 'Shipping items and parcels between cities across the Kingdom.'],
+          ['shopping-cart', 'شراء وتوصيل المشتريات', 'Shopping & Delivery', 'نشتري لك مقاضيك واحتياجاتك ونوصلها لك.', 'We buy your groceries and essentials and bring them to you.'],
+          ['truck', 'نقل العفش والأثاث', 'Furniture Moving', 'فك وتغليف ونقل وتركيب الأثاث داخل المدينة وخارجها.', 'Dismantling, packing, moving and reassembling furniture — local and intercity.']
         ]
       },
       {
@@ -390,6 +405,20 @@ window.CATALOG = {
           ['hand-coins', 'التقاعد', 'Retirement', 'طلب التقاعد ومتابعة المستحقات.', 'Retirement applications and entitlement follow-up.'],
           ['briefcase', 'برامج دعم التوظيف (هدف)', 'Employment Support (HRDF)', 'التسجيل في برامج صندوق تنمية الموارد البشرية.', 'Enrollment in HRDF programs.'],
           ['heart-pulse', 'التأمين الطبي للعائلة والعمالة', 'Family & Worker Health Insurance', 'مقارنة عروض التأمين الطبي وإصدار الوثائق.', 'Comparing health insurance quotes and issuing policies.']
+        ]
+      }
+      ,{
+        id: 'daily', icon: 'zap', img: 'electric.jpg',
+        title: { ar: 'الكهرباء والمياه والخدمات اليومية', en: 'Utilities & Everyday Services' },
+        desc: { ar: 'فواتير وعدادات ومواعيد وطباعة — نخلّصها عنك', en: 'Bills, meters, appointments and paperwork — done for you' },
+        items: [
+          ['zap', 'خدمات الكهرباء والعدادات', 'Electricity Accounts & Meters', 'فتح حساب ونقل ملكية العداد وفصل الخدمة وإعادتها والاعتراض على الفاتورة.', 'Opening accounts, transferring meter ownership, disconnection/reconnection and bill disputes.'],
+          ['droplets', 'خدمات المياه', 'Water Services', 'طلب توصيل المياه والصرف ونقل العداد ومتابعة البلاغات مع شركة المياه.', 'Water and sewage connection requests, meter transfers and follow-up with the water company.'],
+          ['receipt', 'سداد الفواتير والرسوم', 'Bill & Fee Payments', 'سداد الفواتير الحكومية والمخالفات والرسوم عبر سداد ومتابعة الإيصالات.', 'Paying government bills, fines and fees via SADAD and keeping the receipts.'],
+          ['calendar-check', 'حجز المواعيد الحكومية والصحية', 'Government & Health Appointments', 'حجز المواعيد في الجهات الحكومية والمستشفيات عبر أبشر وصحتي.', 'Booking appointments with government offices and hospitals via Absher and Sehhaty.'],
+          ['smartphone', 'خدمات الاتصالات', 'Telecom Services', 'نقل ملكية الأرقام وإلغاؤها والاستعلام عن الأرقام المسجلة باسمك.', 'Transferring and cancelling numbers, and checking numbers registered in your name.'],
+          ['printer', 'الطباعة وتعبئة النماذج', 'Printing & Form Filling', 'تعبئة النماذج والطلبات الإلكترونية وطباعة المستندات وتصويرها.', 'Filling out forms and online applications, printing and scanning documents.'],
+          ['mail', 'العنوان الوطني وسبل', 'National Address & SPL', 'تسجيل العنوان الوطني وتحديثه وإصدار إثبات العنوان.', 'Registering and updating your national address and issuing proof of address.']
         ]
       }
     ]

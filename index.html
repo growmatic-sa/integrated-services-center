@@ -56,7 +56,7 @@ if(ty==='reload'||(!inn&&ty!=='back_forward')){document.documentElement.classLis
     <span class="orb o1" aria-hidden="true"></span><span class="orb o2" aria-hidden="true"></span><span class="orb o3" aria-hidden="true"></span>
     <div class="container">
       <div class="hero-inner">
-        <div class="hero-badge reveal"><span class="dot"><i data-lucide="sparkles"></i></span><span data-en="Real estate · Government transactions · Student services">عقارية · تعقيب · طلابية — في مركز واحد</span></div>
+        <div class="hero-badge reveal"><span class="dot"><i data-lucide="sparkles"></i></span><span data-en="Real estate · General services · Student services">عقار · خدمات عامة · خدمات طلابية — في مركز واحد</span></div>
         <h1 class="reveal" style="--d:.08s">
           <span data-en="All your services">كل خدماتك</span><br>
           <span class="gold"><span data-en="in one place">في مكان واحد</span><svg class="underline" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 15 C 80 3, 220 3, 297 13" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span>
@@ -78,59 +78,85 @@ if(ty==='reload'||(!inn&&ty!=='back_forward')){document.documentElement.classLis
     </div>
   </section>
 
-  <!-- ===== The two main choices ===== -->
+  <!-- ===== The three main sections ===== -->
   <section class="choices" id="choices">
     <div class="container">
-      <div class="choices-grid">
+      <div class="choices-grid three">
         <a class="choice reveal-zoom" href="real-estate.html">
           <span class="shine" aria-hidden="true"></span>
           <div class="choice-media">
             <img src="assets/img/villa-2.jpg" alt="" loading="eager">
-            <span class="choice-tag"><i data-lucide="home"></i> <span data-en="Buy · Sell · Rent · Manage">بيع · شراء · تأجير · إدارة</span></span>
-            <h3 data-en="Real Estate Services">الخدمات العقارية</h3>
+            <span class="choice-tag"><i data-lucide="home"></i> <span data-en="Rent · Sale · Investment">إيجار · بيع · استثمار</span></span>
+            <h3 data-en="Real Estate">العقار</h3>
           </div>
           <span class="choice-icon"><i data-lucide="building-2"></i></span>
           <div class="choice-body">
-            <p data-en="Everything your property needs: sales and leasing, property and facility management, permits and documentation, plus maintenance and operations.">كل ما يحتاجه عقارك: البيع والتأجير، إدارة الأملاك والمرافق، التوثيق والتراخيص، والصيانة والتشغيل.</p>
+            <p data-en="Villas, apartments, land, buildings and shops for rent, sale or investment — plus a market where you list your property or post what you need.">فلل وشقق وأراضٍ وعمائر ومحلات للإيجار أو البيع أو الاستثمار — مع سوق عقاري تعرض فيه عقارك أو تطلب ما تحتاجه.</p>
             <div class="chips">
-              <span class="chip"><i data-lucide="key-round"></i> <span data-en="Leasing & Ejar">التأجير وإيجار</span></span>
-              <span class="chip"><i data-lucide="building"></i> <span data-en="Property management">إدارة الأملاك</span></span>
-              <span class="chip"><i data-lucide="calculator"></i> <span data-en="Valuation">التقييم العقاري</span></span>
-              <span class="chip"><i data-lucide="wrench"></i> <span data-en="Maintenance">الصيانة</span></span>
-              <span class="chip"><i data-lucide="file-check"></i> <span data-en="Title transfer">الإفراغ</span></span>
+              <span class="chip"><i data-lucide="key-round"></i> <span data-en="Rent">إيجار</span></span>
+              <span class="chip"><i data-lucide="badge-dollar-sign"></i> <span data-en="Sale">بيع</span></span>
+              <span class="chip"><i data-lucide="trending-up"></i> <span data-en="Investment">استثمار</span></span>
+              <span class="chip"><i data-lucide="megaphone"></i> <span data-en="Offers & requests">عرض وطلب</span></span>
             </div>
             <div class="choice-foot">
-              <span class="choice-count"><b data-count-of="realestate">0</b> <span data-en="real estate services">خدمة عقارية</span></span>
+              <span class="choice-count"><b data-count-ads>0</b> <span data-en="property ads">إعلان عقاري</span></span>
               <span class="go"><i data-lucide="arrow-left" class="flip-ltr"></i></span>
             </div>
           </div>
         </a>
 
-        <a class="choice reveal-zoom" style="--d:.12s" href="general-services.html">
+        <a class="choice reveal-zoom" style="--d:.1s" href="general-services.html">
           <span class="shine" aria-hidden="true"></span>
           <div class="choice-media">
             <img src="assets/img/docs-work.jpg" alt="" loading="eager">
-            <span class="choice-tag"><i data-lucide="layout-grid"></i> <span data-en="Government · Students">تعقيب · طلاب</span></span>
+            <span class="choice-tag"><i data-lucide="layout-grid"></i> <span data-en="Government · Delivery · Daily">معاملات · توصيل · يومية</span></span>
             <h3 data-en="General Services">الخدمات العامة</h3>
           </div>
           <span class="choice-icon"><i data-lucide="briefcase"></i></span>
           <div class="choice-body">
-            <p data-en="Government transactions handled on your behalf, plus complete student services — from admission and scholarships to certificate equivalency.">إنجاز معاملاتك الحكومية نيابةً عنك، وخدمات طلابية متكاملة من القبول والابتعاث حتى معادلة الشهادات.</p>
+            <p data-en="Government transactions, delivery, iqama and passports, traffic, commercial registration, utilities and more — sorted into clear categories.">المعاملات الحكومية والتوصيل والإقامة والجوازات والمرور والسجل التجاري والكهرباء والمياه وغيرها — مرتّبة في تصنيفات واضحة.</p>
             <div class="chips">
-              <span class="chip"><i data-lucide="file-check"></i> <span data-en="Government transactions">خدمات التعقيب</span></span>
-              <span class="chip"><i data-lucide="graduation-cap"></i> <span data-en="Student services">الخدمات الطلابية</span></span>
+              <span class="chip"><i data-lucide="truck"></i> <span data-en="Delivery">التوصيل</span></span>
               <span class="chip"><i data-lucide="id-card"></i> <span data-en="Iqama & passports">الإقامة والجوازات</span></span>
-              <span class="chip"><i data-lucide="store"></i> <span data-en="Commercial registration">السجل التجاري</span></span>
-              <span class="chip"><i data-lucide="badge-check"></i> <span data-en="Equivalency">معادلة الشهادات</span></span>
+              <span class="chip"><i data-lucide="car-front"></i> <span data-en="Traffic">المرور</span></span>
+              <span class="chip"><i data-lucide="store"></i> <span data-en="Commercial reg.">السجل التجاري</span></span>
             </div>
             <div class="choice-foot">
-              <span class="choice-count"><b data-count-of="taqib,students">0</b> <span data-en="general services">خدمة عامة</span></span>
+              <span class="choice-count"><b data-count-of="taqib">0</b> <span data-en="general services">خدمة عامة</span></span>
+              <span class="go"><i data-lucide="arrow-left" class="flip-ltr"></i></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="choice reveal-zoom" style="--d:.2s" href="students.html">
+          <span class="shine" aria-hidden="true"></span>
+          <div class="choice-media">
+            <img src="assets/img/students.jpg" alt="" loading="eager">
+            <span class="choice-tag"><i data-lucide="school"></i> <span data-en="Schools & universities">مدارس وجامعات</span></span>
+            <h3 data-en="Student Services">الخدمات الطلابية</h3>
+          </div>
+          <span class="choice-icon"><i data-lucide="graduation-cap"></i></span>
+          <div class="choice-body">
+            <p data-en="University admission, scholarships, certificate equivalency, GAT and achievement tests, academic support, housing and careers.">القبول الجامعي والابتعاث ومعادلة الشهادات والقدرات والتحصيلي والدعم الأكاديمي والسكن والمسار المهني.</p>
+            <div class="chips">
+              <span class="chip"><i data-lucide="graduation-cap"></i> <span data-en="Admission">القبول</span></span>
+              <span class="chip"><i data-lucide="plane-takeoff"></i> <span data-en="Scholarships">الابتعاث</span></span>
+              <span class="chip"><i data-lucide="badge-check"></i> <span data-en="Equivalency">المعادلة</span></span>
+              <span class="chip"><i data-lucide="brain"></i> <span data-en="GAT">القدرات</span></span>
+            </div>
+            <div class="choice-foot">
+              <span class="choice-count"><b data-count-of="students">0</b> <span data-en="student services">خدمة طلابية</span></span>
               <span class="go"><i data-lucide="arrow-left" class="flip-ltr"></i></span>
             </div>
           </div>
         </a>
       </div>
     </div>
+  </section>
+
+  <!-- ===== Property market: offers & requests ===== -->
+  <section class="section-sm" style="padding-bottom:0">
+    <div class="container" data-market-band></div>
   </section>
 
   <!-- ===== Stats ===== -->
@@ -286,6 +312,7 @@ if(ty==='reload'||(!inn&&ty!=='back_forward')){document.documentElement.classLis
 
 <script src="assets/js/vendor/lucide.min.js"></script>
 <script src="assets/js/data.js"></script>
+<script src="assets/js/listings.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

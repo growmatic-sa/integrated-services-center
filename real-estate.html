@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>الخدمات العقارية | مركز الخدمات المتكاملة</title>
-<meta name="description" content="الخدمات العقارية في السعودية: بيع وشراء وتأجير، إدارة الأملاك والمرافق، التقييم والتوثيق، الصيانة والتشغيل.">
+<title>العقار — إيجار وبيع واستثمار | مركز الخدمات المتكاملة</title>
+<meta name="description" content="عقارات للإيجار والبيع والاستثمار في السعودية: فلل، شقق، أراضٍ، عمائر، مجمعات ومحلات — مع سوق عرض وطلب عقاري.">
 <meta name="theme-color" content="#0A2A5A">
 <link rel="icon" href="assets/brand/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/brand/favicon-192.png">
@@ -21,20 +21,38 @@
   <section class="page-hero">
     <div class="bg" style="background-image:url('assets/img/house-night.jpg')" aria-hidden="true"></div>
     <div class="container">
-      <nav class="crumbs reveal" aria-label="breadcrumb"><a href="index.html" data-en="Home">الرئيسية</a> <i data-lucide="chevron-left" class="flip-ltr"></i> <span data-en="Real Estate Services">الخدمات العقارية</span></nav>
-      <h1 class="reveal" style="--d:.06s" data-en="Real Estate <span class='gold'>Services</span>">الخدمات <span class='gold'>العقارية</span></h1>
-      <p class="reveal" style="--d:.12s" data-en="Everything your property needs in one place — from sales, leasing and property management to documentation, permits, maintenance and operations.">كل ما يحتاجه عقارك في مكان واحد — من البيع والتأجير وإدارة الأملاك، إلى التوثيق والتراخيص والصيانة والتشغيل.</p>
-      <div class="page-hero-stats reveal" style="--d:.18s"><span class="pill-stat"><i data-lucide="layout-grid"></i> <b data-count-of="realestate">0</b> <span data-en="services">خدمة</span></span><span class="pill-stat"><i data-lucide="layers"></i> <b>8</b> <span data-en="specialized sections">أقسام متخصصة</span></span><span class="pill-stat"><i data-lucide="shield-check"></i> <span data-en="Licensed partners">شركاء معتمدون</span></span></div>
-      
+      <nav class="crumbs reveal" aria-label="breadcrumb"><a href="index.html" data-en="Home">الرئيسية</a> <i data-lucide="chevron-left" class="flip-ltr"></i> <span data-en="Real Estate">العقار</span></nav>
+      <h1 class="reveal" style="--d:.06s" data-en="Real <span class='gold'>Estate</span>">الخدمات <span class='gold'>العقارية</span></h1>
+      <p class="reveal" style="--d:.12s" data-en="Choose the section — rent, sale or investment — then the property type, and browse the ads or post your own.">اختر القسم: إيجار أو بيع أو استثمار، ثم نوع العقار، وتصفّح الإعلانات أو أضف إعلانك بنفسك.</p>
+      <div class="page-hero-stats reveal" style="--d:.18s"><span class="pill-stat"><i data-lucide="megaphone"></i> <b data-count-ads>0</b> <span data-en="ads">إعلان</span></span><span class="pill-stat"><i data-lucide="layers"></i> <b>3</b> <span data-en="sections: rent · sale · investment">أقسام: إيجار · بيع · استثمار</span></span><span class="pill-stat"><i data-lucide="shield-check"></i> <span data-en="Licensed brokerage">وساطة مرخّصة</span></span></div>
     </div>
   </section>
-  <section id="catalog" data-catalog="realestate"></section>
+
+  <!-- Step 1: section → Step 2: property type → Step 3: market -->
+  <section class="deal-picker" id="dealPicker"></section>
+
+  <!-- Offers & requests -->
+  <section class="section-sm">
+    <div class="container" data-market-band></div>
+  </section>
+
+  <!-- Supporting real estate services -->
+  <section id="services" style="scroll-margin-top:90px">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-en="Supporting services">خدمات عقارية مساندة</span>
+        <h2 class="section-title" data-en="Everything else <span class='accent'>your property needs</span>">كل ما يحتاجه <span class="accent">عقارك</span></h2>
+        <p class="section-sub" data-en="Brokerage, Ejar contracts, property management, documentation, maintenance and more.">الوساطة، عقود إيجار، إدارة الأملاك، التوثيق والإفراغ، الصيانة والتشغيل وغيرها.</p>
+      </div>
+    </div>
+    <div id="catalog" class="catalog-flat" data-catalog="realestate"></div>
+  </section>
   <section style="margin-top:80px">
     <div class="container">
       <div class="cta-band reveal">
         <div>
-          <h2 data-en="Can’t find the service you need?">لم تجد الخدمة التي تبحث عنها؟</h2>
-          <p data-en="Tell us what you need — we most likely handle it or can arrange it for you.">أخبرنا باحتياجك — على الأغلب نقدّمها أو نرتّبها لك.</p>
+          <h2 data-en="Can’t find what you need?">لم تجد ما تبحث عنه؟</h2>
+          <p data-en="Tell us what you need — we most likely handle it or can arrange it for you.">أخبرنا باحتياجك — على الأغلب نقدّمه أو نرتّبه لك.</p>
         </div>
         <div class="cta-actions">
           <a class="btn btn-gold" href="#" data-wa-link="1" target="_blank" rel="noopener"><i data-lucide="message-circle"></i> <span data-en="Ask on WhatsApp">اسألنا عبر واتساب</span></a>
@@ -49,6 +67,7 @@
 
 <script src="assets/js/vendor/lucide.min.js"></script>
 <script src="assets/js/data.js"></script>
+<script src="assets/js/listings.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

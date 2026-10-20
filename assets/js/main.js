@@ -35,16 +35,20 @@
   const TOTAL = Object.keys(C).reduce((n, k) => n + countServices(k), 0);
 
   /* ---------------- Navigation model ---------------- */
+  const M = window.MARKET || null;
   const NAV = [
     { id: 'home', href: 'index.html', ar: 'الرئيسية', en: 'Home', icon: 'home' },
-    { id: 'realestate', href: 'real-estate.html', ar: 'الخدمات العقارية', en: 'Real Estate', icon: 'building-2' },
     {
-      id: 'general', href: 'general-services.html', ar: 'الخدمات العامة', en: 'General Services', icon: 'layout-grid',
+      id: 'realestate', href: 'real-estate.html', ar: 'العقار', en: 'Real Estate', icon: 'building-2',
       children: [
-        { id: 'taqib', href: 'taqib.html', ar: 'خدمات التعقيب', en: 'Government Transactions', icon: 'file-check', dar: 'إنجاز معاملاتك لدى الجهات الحكومية', den: 'Your government paperwork, handled' },
-        { id: 'students', href: 'students.html', ar: 'الخدمات الطلابية', en: 'Student Services', icon: 'graduation-cap', dar: 'قبول، ابتعاث، معادلة، ودعم أكاديمي', den: 'Admission, scholarships, equivalency & support' }
+        { id: 're-rent', href: 'real-estate.html#deal-rent', ar: 'الإيجار', en: 'For Rent', icon: 'key-round', dar: 'فلل، شقق، مجمعات، أدوار، محلات', den: 'Villas, apartments, compounds, floors, shops' },
+        { id: 're-sale', href: 'real-estate.html#deal-sale', ar: 'البيع', en: 'For Sale', icon: 'badge-dollar-sign', dar: 'فلل، شقق، أراضٍ، عمائر، مجمعات', den: 'Villas, apartments, land, buildings, complexes' },
+        { id: 're-invest', href: 'real-estate.html#deal-invest', ar: 'الاستثمار', en: 'Investment', icon: 'trending-up', dar: 'فرص مدرّة للدخل وشراكات', den: 'Income properties & partnerships' },
+        { id: 'market', href: 'market.html', ar: 'سوق العقار (عرض وطلب)', en: 'Property Market', icon: 'megaphone', dar: 'اعرض عقارك أو اطلب ما تبحث عنه', den: 'List your property or post what you need' }
       ]
     },
+    { id: 'general', href: 'general-services.html', ar: 'الخدمات العامة', en: 'General Services', icon: 'layout-grid' },
+    { id: 'students', href: 'students.html', ar: 'الخدمات الطلابية', en: 'Student Services', icon: 'graduation-cap' },
     { id: 'about', href: 'about.html', ar: 'من نحن', en: 'About Us', icon: 'info' },
     { id: 'contact', href: 'contact.html', ar: 'تواصل معنا', en: 'Contact Us', icon: 'phone' }
   ];
@@ -125,7 +129,8 @@
   function renderFooter() {
     const el = document.getElementById('site-footer');
     if (!el) return;
-    const reLinks = C.realestate.categories.slice(0, 6).map((c) => `<li><a href="real-estate.html#${c.id}">${t(c.title)}</a></li>`).join('');
+    const reLinks = NAV[1].children.map((c) => `<li><a href="${c.href}">${T(c.ar, c.en)}</a></li>`).join('') +
+      `<li><a href="real-estate.html#services">${T('خدمات عقارية مساندة', 'Supporting services')}</a></li>`;
     const year = new Date().getFullYear();
     el.innerHTML = `
       <footer class="footer">
@@ -155,11 +160,11 @@
               <ul>${reLinks}</ul>
             </div>
             <div>
-              <h4>${T('الخدمات العامة', 'General Services')}</h4>
+              <h4>${T('الخدمات العامة والطلابية', 'General & Student')}</h4>
               <ul>
-                <li><a href="taqib.html">${T('خدمات التعقيب', 'Government Transactions')}</a></li>
-                <li><a href="taqib.html#jawazat">${T('الجوازات والإقامة', 'Passports & Residency')}</a></li>
-                <li><a href="taqib.html#labor">${T('قوى ومساند', 'Qiwa & Musaned')}</a></li>
+                <li><a href="general-services.html">${T('الخدمات العامة', 'General Services')}</a></li>
+                <li><a href="general-services.html#jawazat">${T('الجوازات والإقامة', 'Passports & Residency')}</a></li>
+                <li><a href="general-services.html#labor">${T('قوى ومساند', 'Qiwa & Musaned')}</a></li>
                 <li><a href="students.html">${T('الخدمات الطلابية', 'Student Services')}</a></li>
                 <li><a href="students.html#admission">${T('القبول الجامعي', 'University Admission')}</a></li>
                 <li><a href="students.html#equiv">${T('معادلة الشهادات', 'Certificate Equivalency')}</a></li>
@@ -170,7 +175,8 @@
               <ul>
                 <li>${icon('map-pin')} <span>${t(S.address)}</span></li>
                 <li>${icon('phone')} <a class="ltr" href="${telLink()}">${S.phoneDisplay}</a></li>
-                <li>${icon('headset')} <span>${T('الرقم الموحد', 'Unified')}: <a class="ltr" href="tel:${S.unified}">${S.unified}</a></span></li>
+                ${S.unified ? `<li>${icon('headset')} <span>${T('الرقم الموحد', 'Unified')}: <a class="ltr" href="tel:${S.unified}">${S.unified}</a></span></li>` : ''}
+                <li>${WA_SVG.replace('class="wa-logo"', 'style="width:1em;height:1em;flex-shrink:0"')} <a class="ltr" href="${waLink()}" target="_blank" rel="noopener">${S.phoneDisplay}</a></li>
                 <li>${icon('mail')} <a href="mailto:${S.email}">${S.email}</a></li>
                 <li>${icon('clock')} <span>${t(S.hours)}</span></li>
               </ul>
@@ -238,7 +244,8 @@
           <select id="f-type" name="type" required>
             <option value="">${T('اختر القسم', 'Select a section')}</option>
             <option>${T('الخدمات العقارية', 'Real Estate Services')}</option>
-            <option>${T('خدمات التعقيب', 'Government Transactions')}</option>
+            <option>${T('سوق العقار (عرض أو طلب)', 'Property market (offer or request)')}</option>
+            <option>${T('الخدمات العامة', 'General Services')}</option>
             <option>${T('الخدمات الطلابية', 'Student Services')}</option>
             <option>${T('استفسار عام', 'General inquiry')}</option>
           </select>
@@ -305,17 +312,29 @@
     });
   }
 
-  /* ---------------- Service modal ---------------- */
+  /* ---------------- Modal ---------------- */
   let lastFocus = null;
+  function showModal(html) {
+    const modal = document.getElementById('svcModal');
+    const box = modal.querySelector('.modal-box');
+    box.innerHTML = html;
+    drawIcons();
+    lastFocus = document.activeElement;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    box.scrollTop = 0;
+    setTimeout(() => box.querySelector('#f-name')?.focus(), 350);
+    return box;
+  }
+
   function openService(catKey, catIdx, itemIdx) {
     const cat = C[catKey].categories[catIdx];
     const it = cat.items[itemIdx];
     const title = T(it[1], it[2]);
     const desc = T(it[3], it[4]);
     const section = `${t(C[catKey].title)} — ${t(cat.title)}`;
-    const modal = document.getElementById('svcModal');
-    const box = modal.querySelector('.modal-box');
-    box.innerHTML = `
+    const box = showModal(`
       <div class="modal-head">
         <button class="modal-close" type="button" data-modal-close aria-label="${T('إغلاق', 'Close')}">${icon('x')}</button>
         <div class="ico">${icon(it[0])}</div>
@@ -337,14 +356,8 @@
           </div>
           <p class="form-note">${icon('info')} ${T('لن نشارك بياناتك مع أي جهة. سنتواصل معك لتأكيد المتطلبات والتكلفة قبل البدء.', 'We never share your data. We will confirm requirements and cost with you before starting.')}</p>
         </form>
-      </div>`;
-    drawIcons();
+      </div>`);
     bindRequestForm(box.querySelector('form'), { title, section });
-    lastFocus = document.activeElement;
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => box.querySelector('#f-name')?.focus(), 350);
   }
   function closeModal() {
     const modal = document.getElementById('svcModal');
@@ -396,8 +409,15 @@
         </div>
       </section>`).join('');
 
+    const howto = `
+      <ol class="howto reveal">
+        <li><b>1</b> ${T('اختر التصنيف', 'Pick a category')}</li>
+        <li><b>2</b> ${T('اضغط على الخدمة', 'Tap the service')}</li>
+        <li><b>3</b> ${T('أرسل طلبك عبر واتساب', 'Send your request on WhatsApp')}</li>
+      </ol>`;
+
     root.innerHTML = `
-      <div class="container"><div class="cat-cards">${cards}</div></div>
+      <div class="container"><div class="cat-cards">${cards}</div>${howto}</div>
       <div class="catalog-bar" id="catalogBar">
         <div class="container">
           <div class="tabs" role="tablist">${tabs}</div>
@@ -417,39 +437,10 @@
         </div>
       </div>`;
 
-    // Card / tab jump
-    root.querySelectorAll('[data-jump]').forEach((b) => b.addEventListener('click', () => jumpTo(b.dataset.jump)));
-    root.querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => {
-      const id = b.dataset.tab;
-      if (id === 'all') { document.getElementById('catalogBar').scrollIntoView({ behavior: 'smooth' }); }
-      else jumpTo(id);
-    }));
-    // Service click → modal
-    root.querySelectorAll('[data-svc]').forEach((b) => b.addEventListener('click', () => {
-      const [ci, ii] = b.dataset.svc.split(':').map(Number);
-      openService(key, ci, ii);
-    }));
-
-    // Search
-    const input = root.querySelector('#svcSearch');
-    input.addEventListener('input', () => {
-      const q = normalize(input.value.trim());
-      let anyVisible = false;
-      root.querySelectorAll('.cat-section').forEach((sec) => {
-        let n = 0;
-        sec.querySelectorAll('.svc').forEach((card) => {
-          const match = !q || card.dataset.search.includes(q);
-          card.style.display = match ? '' : 'none';
-          if (match) { n++; card.classList.add('in'); }
-        });
-        sec.style.display = n ? '' : 'none';
-        if (n) anyVisible = true;
-      });
-      root.querySelector('#noResults').classList.toggle('show', !anyVisible);
-    });
-
-    // Scroll-spy for tabs
+    // Picking a category (card or tab) shows only that category, so the list stays short
     const tabsEl = root.querySelector('.tabs');
+    const input = root.querySelector('#svcSearch');
+    let activeCat = 'all';
     const setActive = (id) => {
       tabsEl.querySelectorAll('.tab').forEach((x) => x.classList.toggle('active', x.dataset.tab === id));
       const a = tabsEl.querySelector(`.tab[data-tab="${id}"]`);
@@ -458,10 +449,43 @@
         tabsEl.scrollTo({ left: l, behavior: 'smooth' });
       }
     };
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach((en) => { if (en.isIntersecting) setActive(en.target.dataset.cat); });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    root.querySelectorAll('.cat-section').forEach((s) => spy.observe(s));
+    const apply = () => {
+      const q = normalize(input.value.trim());
+      let anyVisible = false;
+      root.querySelectorAll('.cat-section').forEach((sec) => {
+        let n = 0;
+        const inCat = q || activeCat === 'all' || sec.dataset.cat === activeCat;
+        sec.querySelectorAll('.svc').forEach((card) => {
+          const match = inCat && (!q || card.dataset.search.includes(q));
+          card.style.display = match ? '' : 'none';
+          if (match) { n++; card.classList.add('in'); }
+        });
+        sec.style.display = n ? '' : 'none';
+        if (n) { anyVisible = true; sec.querySelector('.cat-head').classList.add('in'); }
+      });
+      root.querySelector('#noResults').classList.toggle('show', !anyVisible);
+    };
+    const pick = (id, scroll = true) => {
+      activeCat = id;
+      input.value = '';
+      setActive(id);
+      apply();
+      if (scroll) document.getElementById('catalogBar').scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+    };
+    root._pick = pick;
+
+    root.querySelectorAll('[data-jump]').forEach((b) => b.addEventListener('click', () => pick(b.dataset.jump)));
+    root.querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => pick(b.dataset.tab)));
+    // Service click → modal
+    root.querySelectorAll('[data-svc]').forEach((b) => b.addEventListener('click', () => {
+      const [ci, ii] = b.dataset.svc.split(':').map(Number);
+      openService(key, ci, ii);
+    }));
+    // Search looks through every category
+    input.addEventListener('input', () => {
+      if (input.value.trim() && activeCat !== 'all') { activeCat = 'all'; setActive('all'); }
+      apply();
+    });
   }
 
   function jumpTo(id) {
@@ -469,12 +493,433 @@
     if (el) el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
   }
 
+  /* ---------------- Real estate market (عرض وطلب) ---------------- */
+  const KIND = { offer: { ar: 'عرض', en: 'Offer' }, request: { ar: 'مطلوب', en: 'Wanted' } };
+  const deal = (id) => M.deals.find((d) => d.id === id);
+  const typeName = (k, one) => { const ty = M.types[k]; return ty ? t(one ? ty.one : ty) : k; };
+  const cityName = (ar) => { const c = S.cities.find((x) => x[0] === ar); return c ? T(c[0], c[1]) : ar; };
+  const fmtNum = (n) => Number(n).toLocaleString(lang === 'ar' ? 'ar-SA-u-nu-latn' : 'en-US');
+  const adsFor = (f) => M.listings.filter((a) => (!f.deal || a.deal === f.deal) && (!f.type || a.type === f.type) && (!f.kind || a.kind === f.kind));
+  const marketUrl = (f) => {
+    const p = new URLSearchParams();
+    Object.entries(f).forEach(([k, v]) => { if (v) p.set(k, v); });
+    const s = p.toString();
+    return `market.html${s ? `?${s}` : ''}`;
+  };
+
+  function adPrice(a) {
+    if (!a.price) return `<span class="ad-price muted">${T('السعر عند التواصل', 'Price on request')}</span>`;
+    const per = a.per === 'month' ? T(' / شهرياً', ' / month') : a.per === 'year' ? T(' / سنوياً', ' / year') : '';
+    const pre = a.kind === 'request' ? `<small>${T('الميزانية حتى', 'Budget up to')}</small>` : '';
+    return `<span class="ad-price">${pre}<b>${fmtNum(a.price)}</b> ${T('ريال', 'SAR')}<small>${per}</small></span>`;
+  }
+
+  function adCard(a, i = 0) {
+    const ty = M.types[a.type] || {};
+    const where = `${cityName(a.city)}${a.district ? ` — ${esc(t(a.district))}` : ''}`;
+    const specs = [
+      a.area ? `<span>${icon('ruler')} ${fmtNum(a.area)} ${T('م²', 'm²')}</span>` : '',
+      a.rooms ? `<span>${icon('bed-double')} ${a.rooms} ${T('غرف', 'rooms')}</span>` : '',
+      a.baths ? `<span>${icon('bath')} ${a.baths} ${T('دورات مياه', 'baths')}</span>` : ''
+    ].join('');
+    const msg = T(`مرحباً، أستفسر عن الإعلان رقم ${a.id} في سوق العقار:\n${t(a.title)}\n${where}`,
+                  `Hello, I'm asking about ad #${a.id} on the property market:\n${t(a.title)}\n${where}`);
+    const date = a.date ? new Date(a.date).toLocaleDateString(lang === 'ar' ? 'ar-SA-u-nu-latn-ca-gregory' : 'en-GB', { day: 'numeric', month: 'short' }) : '';
+    return `
+      <article class="ad ad-${a.kind} reveal" style="--d:${(i % 3) * 0.06}s">
+        <div class="ad-media">
+          ${a.img ? `<img src="assets/img/${a.img}" alt="" loading="lazy">` : `<span class="ad-ph">${icon(a.kind === 'request' ? 'search' : (ty.icon || 'home'))}</span>`}
+          <span class="ad-kind">${icon(a.kind === 'request' ? 'search' : 'tag')} ${t(KIND[a.kind])}</span>
+          <span class="ad-deal">${t(deal(a.deal) || {})}</span>
+          ${a.sample ? `<span class="ad-sample">${T('إعلان تجريبي', 'Sample ad')}</span>` : ''}
+        </div>
+        <div class="ad-body">
+          <div class="ad-meta"><span>${icon(ty.icon || 'home')} ${typeName(a.type, true)}</span><span>#${a.id}${date ? ` · ${date}` : ''}</span></div>
+          <h3>${esc(t(a.title))}</h3>
+          <div class="ad-loc">${icon('map-pin')} ${where}</div>
+          ${specs ? `<div class="ad-specs">${specs}</div>` : ''}
+          <div class="ad-foot">
+            ${adPrice(a)}
+            <span class="ad-actions">
+              <a class="ad-btn wa" href="${waLink(msg)}" target="_blank" rel="noopener" aria-label="${T('تواصل عبر واتساب', 'WhatsApp')}">${WA_SVG.replace('class="wa-logo"', 'style="width:1.15em;height:1.15em"')}</a>
+              <a class="ad-btn" href="${telLink()}" aria-label="${T('اتصل', 'Call')}">${icon('phone')}</a>
+            </span>
+          </div>
+        </div>
+      </article>`;
+  }
+
+  // Post an offer / request → formatted WhatsApp message to the office for review and publishing
+  function openPost(kind = 'offer', preset = {}) {
+    if (!M) return;
+    let k = kind === 'request' ? 'request' : 'offer';
+    const d0 = deal(preset.deal) ? preset.deal : 'rent';
+    const typeOpts = (dl, sel) => `<option value="">${T('اختر نوع العقار', 'Choose property type')}</option>` +
+      deal(dl).types.map((x) => `<option value="${x}"${x === sel ? ' selected' : ''}>${typeName(x, true)}</option>`).join('');
+    const head = () => k === 'offer'
+      ? [icon('megaphone'), T('أضف عرضك — عندي عقار', 'List your property'), T('اكتب بيانات عقارك وسيصلنا على واتساب، نراجعه وننشره في سوق العقار.', 'Fill in your property details — it reaches us on WhatsApp and we publish it after a quick review.')]
+      : [icon('search'), T('أضف طلبك — أبحث عن عقار', 'Post what you need'), T('اكتب مواصفات العقار الذي تبحث عنه وسننشر طلبك ونبحث لك عن الأنسب.', 'Describe the property you need — we post your request and search for the best match.')];
+    const [hIco, hTitle, hText] = head();
+
+    const box = showModal(`
+      <div class="modal-head">
+        <button class="modal-close" type="button" data-modal-close aria-label="${T('إغلاق', 'Close')}">${icon('x')}</button>
+        <div class="ico" data-h-ico>${hIco}</div>
+        <small>${T('سوق العقار — عرض وطلب', 'Property market — offers & requests')}</small>
+        <h3 id="mTitle" data-h-title>${hTitle}</h3>
+        <p data-h-text>${hText}</p>
+      </div>
+      <div class="modal-body">
+        <form novalidate class="post-form">
+          <div class="seg seg-kind" role="radiogroup" aria-label="${T('نوع الإعلان', 'Ad type')}">
+            <label><input type="radio" name="kind" value="offer"${k === 'offer' ? ' checked' : ''}><span>${icon('tag')} ${T('عندي عقار (عرض)', 'I have a property')}</span></label>
+            <label><input type="radio" name="kind" value="request"${k === 'request' ? ' checked' : ''}><span>${icon('search')} ${T('أبحث عن عقار (طلب)', 'I am looking')}</span></label>
+          </div>
+          <div class="field full">
+            <label>${T('القسم', 'Section')} <span class="req">*</span></label>
+            <div class="seg seg-deal">
+              ${M.deals.map((dl) => `<label><input type="radio" name="deal" value="${dl.id}"${dl.id === d0 ? ' checked' : ''}><span>${icon(dl.icon)} ${t(dl)}</span></label>`).join('')}
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label for="f-ptype">${T('نوع العقار', 'Property type')} <span class="req">*</span></label>
+              <select id="f-ptype" name="ptype" required>${typeOpts(d0, preset.type)}</select>
+              <div class="err">${T('فضلاً اختر نوع العقار', 'Please choose the property type')}</div>
+            </div>
+            <div class="field">
+              <label for="f-city">${T('المدينة', 'City')} <span class="req">*</span></label>
+              <select id="f-city" name="city" required>${cityOptions()}</select>
+              <div class="err">${T('فضلاً اختر المدينة', 'Please choose your city')}</div>
+            </div>
+            <div class="field">
+              <label for="f-district">${T('الحي', 'District')}</label>
+              <input id="f-district" name="district" placeholder="${T('مثال: حي النرجس', 'e.g. Al Narjis')}">
+            </div>
+            <div class="field">
+              <label for="f-price" data-price-label>${k === 'offer' ? T('السعر المطلوب', 'Asking price') : T('الميزانية', 'Budget')}</label>
+              <input id="f-price" name="price" inputmode="numeric" placeholder="${T('مثال: 45,000 ريال سنوياً', 'e.g. SAR 45,000 / year')}">
+            </div>
+            <div class="field">
+              <label for="f-area">${T('المساحة (م²)', 'Area (m²)')}</label>
+              <input id="f-area" name="area" inputmode="numeric" placeholder="${T('اختياري', 'Optional')}">
+            </div>
+            <div class="field">
+              <label for="f-rooms">${T('عدد الغرف', 'Bedrooms')}</label>
+              <input id="f-rooms" name="rooms" inputmode="numeric" placeholder="${T('اختياري', 'Optional')}">
+            </div>
+            <div class="field full">
+              <label for="f-notes" data-notes-label>${k === 'offer' ? T('وصف العقار', 'Property description') : T('مواصفات العقار المطلوب', 'What you are looking for')}</label>
+              <textarea id="f-notes" name="notes" placeholder="${T('عدد الأدوار، عمر العقار، المميزات، الواجهة…', 'Floors, age, features, frontage…')}"></textarea>
+            </div>
+            <div class="field full" data-offer-only${k === 'offer' ? '' : ' hidden'}>
+              <label for="f-license">${T('رقم ترخيص الإعلان العقاري (إن وجد)', 'Property ad license no. (if any)')}</label>
+              <input id="f-license" name="license" dir="ltr" placeholder="${T('اختياري — نساعدك في استخراجه', 'Optional — we can help you get one')}">
+            </div>
+            <div class="field">
+              <label for="f-name">${T('الاسم', 'Full name')} <span class="req">*</span></label>
+              <input id="f-name" name="name" autocomplete="name" required placeholder="${T('اسمك الكريم', 'Your name')}">
+              <div class="err">${T('فضلاً اكتب اسمك', 'Please enter your name')}</div>
+            </div>
+            <div class="field">
+              <label for="f-phone">${T('رقم الجوال', 'Mobile number')} <span class="req">*</span></label>
+              <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" required placeholder="05XXXXXXXX">
+              <div class="err">${T('رقم جوال سعودي صحيح يبدأ بـ 05', 'A valid Saudi mobile starting with 05')}</div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-wa" type="submit">${WA_SVG.replace('class="wa-logo"', 'style="width:1.2em;height:1.2em"')} ${T('إرسال الإعلان عبر واتساب', 'Send via WhatsApp')}</button>
+          </div>
+          <p class="form-note">${icon('images')} ${T('عندك صور للعقار؟ أرسلها في نفس محادثة واتساب بعد الإرسال.', 'Have photos? Send them in the same WhatsApp chat after sending.')}</p>
+        </form>
+      </div>`);
+
+    const form = box.querySelector('form');
+    const city = form.querySelector('#f-city');
+    if (preset.city) city.value = cityName(preset.city);
+    form.addEventListener('change', (e) => {
+      if (e.target.name === 'deal') {
+        form.querySelector('#f-ptype').innerHTML = typeOpts(e.target.value, form.querySelector('#f-ptype').value);
+      }
+      if (e.target.name === 'kind') {
+        k = e.target.value;
+        const [i2, t2, p2] = head();
+        box.querySelector('[data-h-ico]').innerHTML = i2;
+        box.querySelector('[data-h-title]').textContent = t2;
+        box.querySelector('[data-h-text]').textContent = p2;
+        box.querySelector('[data-price-label]').textContent = k === 'offer' ? T('السعر المطلوب', 'Asking price') : T('الميزانية', 'Budget');
+        box.querySelector('[data-notes-label]').textContent = k === 'offer' ? T('وصف العقار', 'Property description') : T('مواصفات العقار المطلوب', 'What you are looking for');
+        box.querySelector('[data-offer-only]').hidden = k !== 'offer';
+        drawIcons();
+      }
+    });
+    form.addEventListener('input', (e) => {
+      const f = e.target.closest('.field');
+      if (f && f.classList.contains('invalid')) f.classList.remove('invalid');
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!validate(form)) return;
+      const v = Object.fromEntries(new FormData(form).entries());
+      const lines = [
+        T('مرحباً مركز الخدمات المتكاملة،', 'Hello Integrated Services Center,'),
+        v.kind === 'offer' ? T('أرغب في نشر عرض عقاري في سوق العقار:', 'I would like to list a property on the market:')
+                           : T('أرغب في نشر طلب عقاري في سوق العقار:', 'I would like to post a property request:'),
+        '',
+        `• ${T('نوع الإعلان', 'Ad type')}: ${v.kind === 'offer' ? T('عرض (عندي عقار)', 'Offer') : T('طلب (أبحث عن عقار)', 'Request')}`,
+        `• ${T('القسم', 'Section')}: ${t(deal(v.deal))}`,
+        `• ${T('نوع العقار', 'Property type')}: ${typeName(v.ptype, true)}`,
+        `• ${T('المدينة', 'City')}: ${v.city}${v.district ? ` — ${v.district}` : ''}`
+      ];
+      if (v.price) lines.push(`• ${v.kind === 'offer' ? T('السعر', 'Price') : T('الميزانية', 'Budget')}: ${v.price}`);
+      if (v.area) lines.push(`• ${T('المساحة', 'Area')}: ${v.area} ${T('م²', 'm²')}`);
+      if (v.rooms) lines.push(`• ${T('الغرف', 'Bedrooms')}: ${v.rooms}`);
+      if (v.notes) lines.push(`• ${T('التفاصيل', 'Details')}: ${v.notes}`);
+      if (v.kind === 'offer' && v.license) lines.push(`• ${T('رقم ترخيص الإعلان', 'Ad license')}: ${v.license}`);
+      lines.push(`• ${T('الاسم', 'Name')}: ${v.name}`, `• ${T('الجوال', 'Mobile')}: ${v.phone}`);
+      window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+      toast(T('تم تجهيز إعلانك — أرسله عبر واتساب وسننشره بعد المراجعة', 'Your ad is ready — send it on WhatsApp and we will publish it after review'));
+      setTimeout(closeModal, 600);
+    });
+  }
+
+  // Home / real estate: "List or request a property" band
+  function renderMarketBand() {
+    document.querySelectorAll('[data-market-band]').forEach((el) => {
+      if (!M) return;
+      const n = M.listings.length;
+      el.innerHTML = `
+        <div class="market-band reveal">
+          <div class="mb-text">
+            <span class="eyebrow">${icon('megaphone')} ${T('سوق العقار — عرض وطلب', 'Property market — offers & requests')}</span>
+            <h2>${T('عندك عقار؟ اعرضه. تدوّر عقار؟ اطلبه.', 'Have a property? List it. Need one? Ask for it.')}</h2>
+            <p>${T('مثل الحراج لكن أسهل وأوثق: أضف إعلانك أو طلبك في دقيقة، ويتواصل معك فريقنا ويوصلك بالطرف المناسب.', 'Like a classifieds board, but simpler and more reliable: post in a minute and our team connects you with the right party.')}</p>
+          </div>
+          <div class="mb-actions">
+            <button class="mb-card" type="button" data-post="offer">
+              <span class="ico">${icon('tag')}</span>
+              <span><b>${T('اعرض عقارك', 'List a property')}</b><small>${T('فيلا، شقة، أرض، محل…', 'Villa, apartment, land, shop…')}</small></span>
+              ${arrow()}
+            </button>
+            <button class="mb-card" type="button" data-post="request">
+              <span class="ico">${icon('search')}</span>
+              <span><b>${T('اطلب عقار', 'Request a property')}</b><small>${T('اكتب ما تحتاجه ونبحث لك', 'Tell us what you need')}</small></span>
+              ${arrow()}
+            </button>
+            <a class="mb-link" href="market.html">${icon('layout-grid')} ${T('تصفّح الإعلانات', 'Browse ads')} <span class="n">${n}</span></a>
+          </div>
+        </div>`;
+    });
+  }
+
+  // Real estate page: section (rent / sale / invest) → property type → market
+  function renderDeals() {
+    const root = document.getElementById('dealPicker');
+    if (!root || !M) return;
+    const steps = `
+      <ol class="flow-steps reveal">
+        <li class="on" data-step="1"><b>1</b> ${T('اختر القسم', 'Choose a section')}</li>
+        <li data-step="2"><b>2</b> ${T('اختر نوع العقار', 'Choose property type')}</li>
+        <li data-step="3"><b>3</b> ${T('تصفّح أو أضف إعلانك', 'Browse or post')}</li>
+      </ol>`;
+    const cards = M.deals.map((d, i) => `
+      <button class="deal-card reveal-zoom" style="--d:${i * 0.08}s" type="button" data-deal="${d.id}" id="deal-${d.id}" aria-expanded="false">
+        <img src="assets/img/${d.img}" alt="" loading="eager">
+        <span class="ico">${icon(d.icon)}</span>
+        <span class="deal-txt">
+          <h3>${t(d)}</h3>
+          <small>${T(d.dar, d.den)}</small>
+          <span class="deal-foot"><span>${adsFor({ deal: d.id }).length} ${T('إعلان', 'ads')}</span><span class="go">${T('اختر', 'Choose')} ${arrow()}</span></span>
+        </span>
+      </button>`).join('');
+    root.innerHTML = `
+      <div class="container">
+        ${steps}
+        <div class="deal-grid">${cards}</div>
+        <div class="type-panel" id="typePanel" hidden></div>
+      </div>`;
+
+    const panel = root.querySelector('#typePanel');
+    const open = (id, scroll = true) => {
+      const d = deal(id);
+      if (!d) return;
+      root.querySelectorAll('[data-deal]').forEach((b) => {
+        b.classList.toggle('selected', b.dataset.deal === id);
+        b.setAttribute('aria-expanded', b.dataset.deal === id ? 'true' : 'false');
+      });
+      root.querySelectorAll('.flow-steps li').forEach((li) => li.classList.toggle('on', +li.dataset.step <= 2));
+      panel.innerHTML = `
+        <div class="type-head">
+          <span class="ico">${icon(d.icon)}</span>
+          <div><h3>${T('اختر نوع العقار', 'Choose property type')} — <span class="accent">${t(d)}</span></h3>
+          <p>${T('اضغط على النوع لتشاهد العروض والطلبات المتاحة', 'Tap a type to see available offers and requests')}</p></div>
+        </div>
+        <div class="type-grid">
+          ${d.types.map((k, i) => {
+            const n = adsFor({ deal: d.id, type: k }).length;
+            return `<a class="type-tile" style="--i:${i}" href="${marketUrl({ deal: d.id, type: k })}">
+              <span class="ico">${icon(M.types[k].icon)}</span>
+              <b>${typeName(k)}</b>
+              <small>${n ? `${n} ${T('إعلان', 'ads')}` : T('أضف أول إعلان', 'Be the first')}</small>
+            </a>`;
+          }).join('')}
+        </div>
+        <div class="type-actions">
+          <a class="btn btn-navy" href="${marketUrl({ deal: d.id })}">${icon('layout-grid')} ${T('كل إعلانات', 'All ads:')} ${t(d)}</a>
+          <button class="btn btn-gold" type="button" data-post="offer" data-post-deal="${d.id}">${icon('tag')} ${T('اعرض عقارك', 'List a property')}</button>
+          <button class="btn btn-outline" type="button" data-post="request" data-post-deal="${d.id}">${icon('search')} ${T('اطلب عقار', 'Request a property')}</button>
+        </div>`;
+      panel.hidden = false;
+      panel.classList.remove('show');
+      void panel.offsetWidth; // restart the entrance animation
+      panel.classList.add('show');
+      drawIcons();
+      if (scroll) setTimeout(() => panel.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'center' }), 60);
+    };
+    root._open = open;
+    root.querySelectorAll('[data-deal]').forEach((b) => b.addEventListener('click', () => open(b.dataset.deal)));
+  }
+
+  // market.html: filterable board of offers & requests
+  function renderMarket() {
+    const root = document.getElementById('market');
+    if (!root || !M) return;
+    const qs = new URLSearchParams(location.search);
+    const f = {
+      kind: KIND[qs.get('kind')] ? qs.get('kind') : '',
+      deal: deal(qs.get('deal')) ? qs.get('deal') : '',
+      type: M.types[qs.get('type')] ? qs.get('type') : '',
+      city: qs.get('city') || '',
+      q: ''
+    };
+    const cities = [...new Set(M.listings.map((a) => a.city))];
+
+    root.innerHTML = `
+      <div class="container">
+        <div class="post-cards">
+          <button class="post-card offer reveal" type="button" data-post="offer">
+            <span class="ico">${icon('tag')}</span>
+            <span><b>${T('عندي عقار', 'I have a property')}</b><small>${T('أضف عرض بيع أو إيجار أو استثمار', 'Post a sale, rent or investment offer')}</small></span>
+            <span class="plus">${icon('plus')}</span>
+          </button>
+          <button class="post-card request reveal" style="--d:.08s" type="button" data-post="request">
+            <span class="ico">${icon('search')}</span>
+            <span><b>${T('أبحث عن عقار', 'I am looking for a property')}</b><small>${T('اكتب طلبك ونوصلك بالعرض المناسب', 'Post your request — we find the match')}</small></span>
+            <span class="plus">${icon('plus')}</span>
+          </button>
+        </div>
+
+        <div class="mk-filters reveal">
+          <div class="mk-row">
+            <div class="seg seg-sm" data-f="kind">
+              <button type="button" data-v="">${T('الكل', 'All')}</button>
+              <button type="button" data-v="offer">${icon('tag')} ${T('العروض', 'Offers')}</button>
+              <button type="button" data-v="request">${icon('search')} ${T('الطلبات', 'Requests')}</button>
+            </div>
+            <div class="seg seg-sm" data-f="deal">
+              <button type="button" data-v="">${T('كل الأقسام', 'All sections')}</button>
+              ${M.deals.map((d) => `<button type="button" data-v="${d.id}">${icon(d.icon)} ${t(d)}</button>`).join('')}
+            </div>
+          </div>
+          <div class="mk-row">
+            <div class="tabs mk-types" data-f="type"></div>
+          </div>
+          <div class="mk-row">
+            <label class="mk-select">${icon('map-pin')}
+              <span class="sr-only">${T('المدينة', 'City')}</span>
+              <select data-f="city"><option value="">${T('كل المدن', 'All cities')}</option>${cities.map((c) => `<option value="${esc(c)}">${cityName(c)}</option>`).join('')}</select>
+            </label>
+            <label class="search">
+              <span class="sr-only">${T('ابحث في الإعلانات', 'Search ads')}</span>
+              ${icon('search')}
+              <input type="search" data-f="q" placeholder="${T('ابحث: حي، مدينة، وصف…', 'Search: district, city, description…')}">
+            </label>
+          </div>
+        </div>
+
+        <div class="mk-status"><span id="mkCount"></span><button type="button" class="mk-clear" id="mkClear">${icon('x')} ${T('مسح الفلاتر', 'Clear filters')}</button></div>
+        <div class="ad-grid" id="adGrid"></div>
+        <div class="no-results" id="mkEmpty">
+          <span class="ico">${icon('inbox')}</span>
+          <h3>${T('لا توجد إعلانات مطابقة حالياً', 'No matching ads right now')}</h3>
+          <p>${T('أضف طلبك الآن وسنبحث لك عن العقار المناسب ونتواصل معك.', 'Post your request and we will search for the right property for you.')}</p>
+          <button class="btn btn-gold" type="button" data-post="request">${icon('search')} ${T('أضف طلبك', 'Post a request')}</button>
+        </div>
+      </div>`;
+
+    const grid = root.querySelector('#adGrid');
+    const typesEl = root.querySelector('[data-f="type"]');
+    const renderTypes = () => {
+      const keys = f.deal ? deal(f.deal).types : Object.keys(M.types);
+      if (f.type && !keys.includes(f.type)) f.type = '';
+      typesEl.innerHTML = `<button class="tab${f.type ? '' : ' active'}" type="button" data-v="">${icon('layout-grid')} ${T('كل الأنواع', 'All types')}</button>` +
+        keys.map((k) => `<button class="tab${f.type === k ? ' active' : ''}" type="button" data-v="${k}">${icon(M.types[k].icon)} ${typeName(k)}</button>`).join('');
+    };
+    const sync = () => {
+      root.querySelectorAll('.seg[data-f]').forEach((s) => s.querySelectorAll('button').forEach((b) => b.classList.toggle('active', b.dataset.v === f[s.dataset.f])));
+      root.querySelector('select[data-f="city"]').value = f.city;
+    };
+    const draw = () => {
+      const q = normalize(f.q.trim());
+      const list = M.listings
+        .filter((a) => (!f.kind || a.kind === f.kind) && (!f.deal || a.deal === f.deal) && (!f.type || a.type === f.type) && (!f.city || a.city === f.city))
+        .filter((a) => !q || normalize([a.title.ar, a.title.en, a.city, cityName(a.city), a.district && a.district.ar, a.district && a.district.en, typeName(a.type, true), a.id].join(' ')).includes(q))
+        .sort((x, y) => String(y.date).localeCompare(String(x.date)) || y.id - x.id);
+      grid.innerHTML = list.map(adCard).join('');
+      root.querySelector('#mkEmpty').classList.toggle('show', !list.length);
+      root.querySelector('#mkCount').innerHTML = `<b>${list.length}</b> ${T('إعلان', 'ads')}${f.deal ? ` · ${t(deal(f.deal))}` : ''}${f.type ? ` · ${typeName(f.type)}` : ''}`;
+      root.querySelector('#mkClear').hidden = !(f.kind || f.deal || f.type || f.city || f.q);
+      drawIcons();
+      grid.querySelectorAll('.ad').forEach((el) => el.classList.add('in'));
+      const p = new URLSearchParams();
+      ['kind', 'deal', 'type', 'city'].forEach((k) => f[k] && p.set(k, f[k]));
+      try { history.replaceState(null, '', p.toString() ? `?${p}` : location.pathname); } catch (e) { /* file:// */ }
+    };
+
+    root.querySelectorAll('.seg[data-f]').forEach((s) => s.addEventListener('click', (e) => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      f[s.dataset.f] = b.dataset.v;
+      if (s.dataset.f === 'deal') renderTypes();
+      sync(); draw();
+    }));
+    typesEl.addEventListener('click', (e) => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      f.type = b.dataset.v;
+      typesEl.querySelectorAll('.tab').forEach((x) => x.classList.toggle('active', x === b));
+      draw();
+    });
+    root.querySelector('select[data-f="city"]').addEventListener('change', (e) => { f.city = e.target.value; draw(); });
+    root.querySelector('input[data-f="q"]').addEventListener('input', (e) => { f.q = e.target.value; draw(); });
+    root.querySelector('#mkClear').addEventListener('click', () => {
+      Object.assign(f, { kind: '', deal: '', type: '', city: '', q: '' });
+      root.querySelector('input[data-f="q"]').value = '';
+      renderTypes(); sync(); draw();
+    });
+    root._filters = f;
+
+    renderTypes(); sync(); draw();
+    const post = qs.get('post');
+    if (post === 'offer' || post === 'request') setTimeout(() => openPost(post, f), 400);
+  }
+
+  // Any [data-post] button opens the post form (pre-filled from the market filters when present)
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-post]');
+    if (!b) return;
+    const mk = document.getElementById('market');
+    const preset = b.dataset.postDeal ? { deal: b.dataset.postDeal } : (mk && mk._filters) || {};
+    openPost(b.dataset.post, preset);
+  });
+
   /* ---------------- Home dynamic bits ---------------- */
   function renderHomeBits() {
     document.querySelectorAll('[data-count-of]').forEach((el) => {
       const keys = el.dataset.countOf.split(',');
       el.textContent = keys.reduce((n, k) => n + countServices(k), 0);
     });
+    document.querySelectorAll('[data-count-ads]').forEach((el) => { el.textContent = M ? M.listings.length : 0; });
     document.querySelectorAll('[data-total-services]').forEach((el) => { el.dataset.countTo = TOTAL; });
     const totalCats = Object.keys(C).reduce((n, k) => n + C[k].categories.length, 0);
     document.querySelectorAll('[data-total-cats]').forEach((el) => { el.dataset.countTo = totalCats; });
@@ -527,6 +972,9 @@
     applyStatic();
     renderHomeBits();
     renderCatalog();
+    renderMarketBand();
+    renderDeals();
+    renderMarket();
     renderContactForm();
     drawIcons();
     bindHeader();
@@ -775,11 +1223,23 @@
   initTilt();
   initScroll();
 
-  // Deep links: real-estate.html#maint → scroll to that category after render
-  if (location.hash && document.getElementById('catalog')) {
-    const id = location.hash.slice(1);
-    setTimeout(() => jumpTo(id), 250);
+  // Deep links: general-services.html#labor → show that category; real-estate.html#deal-rent → open that section
+  if (location.hash && location.hash !== '#request') {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const cat = document.getElementById('catalog');
+    const picker = document.getElementById('dealPicker');
+    setTimeout(() => {
+      if (picker && id.startsWith('deal-')) picker._open(id.slice(5));
+      else if (cat && cat._pick && cat.querySelector(`.cat-section[data-cat="${CSS.escape(id)}"]`)) cat._pick(id);
+      else jumpTo(id);
+    }, 250);
   }
+  // Same-page links to a section (e.g. the header dropdown while on real-estate.html)
+  window.addEventListener('hashchange', () => {
+    const id = location.hash.slice(1);
+    const picker = document.getElementById('dealPicker');
+    if (picker && id.startsWith('deal-')) picker._open(id.slice(5));
+  });
   if (location.hash === '#request') {
     setTimeout(() => document.getElementById('request')?.scrollIntoView({ behavior: 'smooth' }), 250);
   }
