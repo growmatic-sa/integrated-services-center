@@ -1,0 +1,14 @@
+{
+  "name": "integrated-services-center",
+  "version": "2.0.0",
+  "private": true,
+  "description": "مركز الخدمات المتكاملة — website + API + admin dashboard (zero dependencies)",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node server/test.js"
+  },
+  "engines": { "node": ">=18" },
+  "license": "UNLICENSED"
+}

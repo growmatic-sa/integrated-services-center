@@ -187,28 +187,47 @@ window.CATALOG = {
   },
 
   /* =====================================================
-     خدمات التعقيب — Government Transactions
+     الخدمات العامة والمعاملات الحكومية — General Services
      ===================================================== */
   taqib: {
     title: { ar: 'الخدمات العامة', en: 'General Services' },
     categories: [
       {
         id: 'jawazat', icon: 'book-user', img: 'docs-work.jpg',
-        title: { ar: 'الجوازات والإقامة', en: 'Passports & Residency' },
+        title: { ar: 'الجوازات والإقامة', en: 'Passports & Residency (Jawazat)' },
         desc: { ar: 'خدمات الجوازات للمواطنين والمقيمين عبر أبشر', en: 'Passport services for citizens and residents via Absher' },
         items: [
-          ['id-card', 'إصدار وتجديد الإقامة', 'Iqama Issuance & Renewal', 'إصدار هوية مقيم وتجديدها وسداد الرسوم.', 'Issuing and renewing resident IDs and paying fees.'],
-          ['plane-takeoff', 'تأشيرة الخروج والعودة', 'Exit / Re-entry Visa', 'إصدار وتمديد وإلغاء تأشيرات الخروج والعودة المفردة والمتعددة.', 'Issuing, extending and cancelling single and multiple exit/re-entry visas.'],
-          ['log-out', 'الخروج النهائي', 'Final Exit', 'إصدار تأشيرة الخروج النهائي وإنهاء متطلباتها.', 'Issuing final exit visas and completing requirements.'],
-          ['book-open', 'إصدار وتجديد الجواز السعودي', 'Saudi Passport Issue & Renewal', 'إصدار الجواز وتجديده وإضافة التابعين.', 'Issuing and renewing passports and adding dependents.'],
-          ['calendar-plus', 'تمديد تأشيرة الزيارة', 'Visit Visa Extension', 'تمديد تأشيرات الزيارة العائلية والشخصية.', 'Extending family and personal visit visas.'],
-          ['users', 'خدمات المرافقين والتابعين', 'Dependents Services', 'إضافة التابعين وسداد رسوم المرافقين وتحديث البيانات.', 'Adding dependents, paying dependent fees and updating records.'],
+          ['id-card', 'إصدار الإقامة', 'Iqama Issuance', 'إصدار هوية مقيم جديدة للعامل أو التابع وسداد الرسوم.', 'Issuing a new resident ID for a worker or dependent and paying fees.'],
+          ['refresh-cw', 'تجديد الإقامة', 'Iqama Renewal', 'تجديد الإقامة وسداد الرسوم قبل انتهائها لتفادي الغرامات.', 'Renewing the iqama and paying fees before expiry to avoid fines.'],
+          ['copy', 'بدل فاقد أو تالف للإقامة', 'Lost / Damaged Iqama Replacement', 'استخراج بدل فاقد أو تالف للإقامة.', 'Obtaining a replacement for a lost or damaged iqama.'],
+          ['printer', 'طباعة الإقامة', 'Iqama Printing', 'طباعة الإقامة أو نسخة رسمية منها.', 'Printing the iqama or an official copy.'],
+          ['book-open', 'إصدار الجواز', 'Passport Issuance', 'إصدار الجواز السعودي لأول مرة وإضافة التابعين.', 'First-time Saudi passport issuance and adding dependents.'],
           ['file-pen-line', 'تحديث بيانات الجواز', 'Passport Data Update', 'تحديث معلومات جواز المقيم في أنظمة الجوازات.', 'Updating a resident’s passport details in the system.'],
-          ['ticket', 'تصاريح سفر التابعين', 'Dependents Travel Permits', 'إصدار تصاريح سفر التابعين عبر الخدمات الإلكترونية.', 'Issuing dependents’ travel permits online.'],
-          ['triangle-alert', 'بلاغ فقدان الجواز أو الهوية', 'Lost Passport / ID Report', 'تقديم بلاغ الفقدان واستخراج البدل.', 'Filing a loss report and obtaining a replacement.'],
-          ['user-plus', 'التفويض الإلكتروني في أبشر', 'Absher E-Authorization', 'إعداد تفويض إلكتروني يتيح متابعة معاملاتك نيابةً عنك.', 'Setting up an e-authorization so we can handle transactions for you.'],
+          ['refresh-cw', 'تجديد الجواز', 'Passport Renewal', 'تجديد الجواز السعودي أو تحديث بياناته إلكترونياً.', 'Renewing the Saudi passport or updating its details online.'],
+          ['book-x', 'بدل فاقد للجواز', 'Lost Passport Replacement', 'تقديم بلاغ الفقدان واستخراج البدل.', 'Filing the loss report and obtaining a replacement.'],
+          ['plane-takeoff', 'إصدار تأشيرة الخروج والعودة', 'Exit / Re-entry Visa Issuance', 'إصدار تأشيرة الخروج والعودة المفردة أو المتعددة.', 'Issuing single or multiple exit/re-entry visas.'],
+          ['plane-landing', 'إلغاء تأشيرة الخروج والعودة', 'Exit / Re-entry Visa Cancellation', 'إلغاء تأشيرة خروج وعودة صادرة مسبقاً.', 'Cancelling a previously issued exit/re-entry visa.'],
+          ['log-out', 'إصدار تأشيرة الخروج النهائي', 'Final Exit Visa Issuance', 'إصدار تأشيرة الخروج النهائي وإنهاء متطلباتها.', 'Issuing final exit visas and completing requirements.'],
+          ['circle-x', 'إلغاء تأشيرة الخروج النهائي', 'Final Exit Visa Cancellation', 'إلغاء تأشيرة الخروج النهائي قبل السفر.', 'Cancelling a final exit visa before travel.'],
+          ['ticket', 'إصدار تأشيرة الزيارة', 'Visit Visa Issuance', 'إصدار تأشيرات الزيارة العائلية والشخصية للأقارب.', 'Issuing family and personal visit visas for relatives.'],
+          ['calendar-plus', 'تمديد تأشيرة الزيارة', 'Visit Visa Extension', 'تمديد تأشيرات الزيارة العائلية والشخصية.', 'Extending family and personal visit visas.'],
+          ['users', 'خدمة التابعين والمرافقين', 'Dependents & Companions Service', 'إضافة التابعين وسداد رسوم المرافقين وتحديث البيانات.', 'Adding dependents, paying companion fees and updating records.'],
+          ['ticket-check', 'تصاريح سفر التابعين', 'Dependents Travel Permits', 'إصدار تصاريح سفر التابعين عبر الخدمات الإلكترونية.', 'Issuing dependents’ travel permits online.'],
+          ['clock', 'الإقامة المؤقتة', 'Temporary Residency', 'إصدار الإقامة المؤقتة ومتابعة متطلباتها.', 'Issuing temporary residency and following its requirements.'],
+          ['baby', 'تسجيل مواليد المقيمين', 'Registering Residents’ Newborns', 'تسجيل المولود وإضافته في إقامة الوالد.', 'Registering newborns and adding them to the parent’s iqama.'],
           ['crown', 'الإقامة المميزة', 'Premium Residency', 'التعريف بالشروط وتجهيز طلب الإقامة المميزة.', 'Explaining eligibility and preparing the Premium Residency application.'],
-          ['baby', 'تسجيل مواليد المقيمين', 'Registering Residents’ Newborns', 'تسجيل المولود وإضافته في إقامة الوالد.', 'Registering newborns and adding them to the parent’s iqama.']
+          ['calendar-check', 'حجز مواعيد الجوازات', 'Jawazat Appointment Booking', 'حجز موعد لك في إدارة الجوازات للخدمات التي تتطلب الحضور.', 'Booking a Jawazat appointment for services that require attendance.']
+        ]
+      },
+      {
+        id: 'absher', icon: 'smartphone', img: 'docs-work.jpg',
+        title: { ar: 'أبشر (أفراد وأعمال)', en: 'Absher (Individuals & Business)' },
+        desc: { ar: 'تحديث وتفعيل حسابات أبشر وإدارة التفويضات', en: 'Updating and activating Absher accounts and managing authorizations' },
+        items: [
+          ['user-round-cog', 'تحديث أبشر أفراد', 'Absher Individuals Update', 'تحديث بيانات حساب أبشر أفراد وتفعيله وتغيير الجوال.', 'Updating an Absher Individuals account, activating it and changing the mobile.'],
+          ['briefcase', 'تحديث أبشر أعمال', 'Absher Business Update', 'تحديث بيانات منشأتك والمخولين في أبشر أعمال.', 'Updating your establishment and authorized users on Absher Business.'],
+          ['badge-check', 'تفعيل أبشر أعمال', 'Absher Business Activation', 'تفعيل حساب أبشر أعمال وربط المنشأة وإضافة المفوضين.', 'Activating Absher Business, linking the establishment and adding delegates.'],
+          ['user-plus', 'التفويض الإلكتروني في أبشر', 'Absher E-Authorization', 'إعداد تفويض إلكتروني يتيح متابعة معاملاتك نيابةً عنك.', 'Setting up an e-authorization so we can handle transactions for you.']
         ]
       },
       {
@@ -231,14 +250,26 @@ window.CATALOG = {
         title: { ar: 'الأحوال المدنية', en: 'Civil Affairs' },
         desc: { ar: 'الهوية الوطنية وسجل الأسرة وتسجيل الوقائع', en: 'National ID, family register and vital records' },
         items: [
-          ['id-card', 'إصدار الهوية الوطنية', 'National ID Issuance', 'إصدار الهوية لأول مرة وتجهيز المتطلبات وحجز الموعد.', 'First-time ID issuance, requirements and appointment booking.'],
+          ['id-card', 'إصدار الهوية الوطنية', 'National ID Issuance', 'إصدار الهوية لأول مرة وتجهيز المتطلبات.', 'First-time ID issuance and preparing requirements.'],
           ['refresh-cw', 'تجديد الهوية الوطنية', 'National ID Renewal', 'تجديد الهوية الوطنية إلكترونياً واستلامها.', 'Online ID renewal and pickup.'],
-          ['copy', 'بدل فاقد أو تالف للهوية', 'ID Replacement', 'استخراج بدل للهوية المفقودة أو التالفة.', 'Replacing lost or damaged IDs.'],
-          ['book-marked', 'سجل الأسرة', 'Family Register', 'إصدار وتحديث سجل الأسرة وإضافة الزوجة والأبناء.', 'Issuing and updating the family register and adding family members.'],
+          ['copy', 'بدل فاقد الهوية الوطنية', 'Lost ID Replacement', 'استخراج بدل للهوية المفقودة أو التالفة.', 'Replacing lost or damaged IDs.'],
+          ['calendar-check', 'حجز موعد الأحوال المدنية', 'Civil Affairs Appointment Booking', 'حجز موعد لك في مكتب الأحوال المدنية.', 'Booking an appointment for you at the Civil Affairs office.'],
+          ['book-marked', 'إصدار سجل الأسرة', 'Family Register Issuance', 'إصدار وتحديث سجل الأسرة وإضافة الزوجة والأبناء.', 'Issuing and updating the family register and adding family members.'],
+          ['book-x', 'إصدار سجل الأسرة لمتوفي', 'Family Register for the Deceased', 'استخراج سجل أسرة لمتوفى لأغراض الإرث والمعاملات.', 'Obtaining a family register for a deceased person for inheritance and transactions.'],
           ['baby', 'تسجيل المواليد وشهادة الميلاد', 'Birth Registration & Certificate', 'تسجيل المولود وإصدار شهادة الميلاد أو بدلها.', 'Registering births and issuing certificates or replacements.'],
           ['heart', 'تسجيل واقعة الزواج', 'Marriage Registration', 'تسجيل عقد الزواج في الأحوال المدنية وتحديث السجل.', 'Registering marriage with Civil Affairs and updating records.'],
-          ['file-x', 'تسجيل الوفاة', 'Death Registration', 'تسجيل الوفاة وإصدار شهادة الوفاة وتحديث السجلات.', 'Registering deaths, issuing certificates and updating records.'],
-          ['pen-line', 'تعديل البيانات المدنية', 'Civil Data Amendment', 'تعديل الاسم أو المهنة أو المؤهل أو العنوان في السجل المدني.', 'Amending name, occupation, qualification or address.']
+          ['file-x', 'تسجيل وفاة', 'Death Registration', 'تسجيل الوفاة وإصدار شهادة الوفاة وتحديث السجلات.', 'Registering deaths, issuing certificates and updating records.'],
+          ['pen-line', 'تعديل المهنة', 'Occupation Amendment', 'تعديل المهنة أو البيانات المدنية في السجل.', 'Amending occupation or civil data in the register.']
+        ]
+      },
+      {
+        id: 'address', icon: 'map-pinned', img: 'docs-work.jpg',
+        title: { ar: 'العنوان الوطني (سبل)', en: 'National Address (SPL)' },
+        desc: { ar: 'تسجيل وتعديل العنوان الوطني للأفراد والأعمال', en: 'Registering and amending the national address for individuals and business' },
+        items: [
+          ['map-pin', 'تسجيل العنوان الوطني', 'National Address Registration', 'تسجيل العنوان الوطني للأفراد وإصدار إثبات العنوان.', 'Registering your national address and issuing proof of address.'],
+          ['map-pinned', 'تعديل العنوان الوطني', 'National Address Amendment', 'تعديل أو تحديث بيانات العنوان الوطني.', 'Amending or updating national address details.'],
+          ['building', 'تسجيل العنوان الوطني أعمال', 'Business National Address Registration', 'تسجيل عنوان المنشأة وربطه بالسجل التجاري.', 'Registering an establishment’s address and linking it to the CR.']
         ]
       },
       {
@@ -260,14 +291,48 @@ window.CATALOG = {
         ]
       },
       {
+        id: 'hr', icon: 'hard-hat', img: 'team.jpg',
+        title: { ar: 'وزارة الموارد البشرية (مكتب العمل)', en: 'Ministry of Human Resources (Labor Office)' },
+        desc: { ar: 'خدمات مكتب العمل والضمان والتأهيل وتأشيرات العمالة والإعاقة', en: 'Labor office services, social security, rehabilitation, work visas and disability services' },
+        items: [
+          ['handshake', 'دعوى تسوية ودية', 'Amicable Settlement Claim', 'تقديم طلب التسوية الودية للخلافات العمالية ومتابعة الجلسات.', 'Filing an amicable settlement claim for labor disputes and following sessions.'],
+          ['graduation-cap', 'التأهيل الشامل', 'Comprehensive Rehabilitation', 'التسجيل في برنامج التأهيل الشامل ومتابعة الطلب.', 'Registering for the comprehensive rehabilitation program and tracking the request.'],
+          ['hand-heart', 'الضمان المطور', 'Developed Social Security', 'التسجيل في الضمان الاجتماعي المطوّر ومتابعة الطلب.', 'Registering for developed social security and tracking the application.'],
+          ['baby', 'تحديث بيانات ملف الطفل', 'Child File Data Update', 'تحديث بيانات ملف الطفل لدى الوزارة.', 'Updating the child’s file with the ministry.'],
+          ['shield-check', 'إصدار شهادة حماية الأجور', 'Wage Protection Certificate', 'إصدار شهادة الالتزام بحماية الأجور.', 'Issuing the wage protection compliance certificate.'],
+          ['repeat', 'تغيير نشاط المنشأة', 'Change of Establishment Activity', 'تغيير نشاط المنشأة في نظام مكتب العمل.', 'Changing the establishment’s activity in the labor system.'],
+          ['arrow-left-right', 'نقل خدمات عامل لصاحب عمل آخر', 'Worker Service Transfer', 'نقل خدمات العامل بين أصحاب العمل وفق الأنظمة.', 'Transferring a worker between employers per regulations.'],
+          ['search', 'استعلام عن نطاق المنشأة', 'Establishment Nitaqat Inquiry', 'الاستعلام عن نطاق المنشأة ونسب السعودة.', 'Checking the establishment’s Nitaqat band and Saudization ratios.'],
+          ['stamp', 'طلب إصدار التأشيرات', 'Visa Issuance Request', 'طلب إصدار تأشيرات العمل للمنشأة.', 'Requesting work visas for the establishment.'],
+          ['home', 'حماية أجور العمالة المنزلية', 'Domestic Workers Wage Protection', 'تسجيل وحماية أجور العمالة المنزلية.', 'Registering and protecting domestic workers’ wages.'],
+          ['file-badge', 'طلب شهادة وظيفية', 'Employment Certificate Request', 'طلب شهادة وظيفية للموظف.', 'Requesting an employment certificate for an employee.'],
+          ['flag', 'إصدار شهادة التوطين', 'Localization (Saudization) Certificate', 'إصدار شهادة التوطين للمنشأة.', 'Issuing the Saudization certificate for the establishment.'],
+          ['home', 'نقل خدمات العمالة المنزلية من منشأة إلى فرد', 'Domestic Worker Transfer: Establishment → Individual', 'نقل خدمات عمالة منزلية من منشأة إلى فرد.', 'Transferring a domestic worker from an establishment to an individual.'],
+          ['home', 'نقل خدمات العمالة المنزلية من فرد إلى فرد', 'Domestic Worker Transfer: Individual → Individual', 'نقل خدمات عمالة منزلية بين فردين.', 'Transferring a domestic worker between two individuals.'],
+          ['file-text', 'إصدار تصاريح أجير', 'Ajeer Permits Issuance', 'إصدار تصاريح أجير للعمالة المعارة.', 'Issuing Ajeer permits for seconded workers.'],
+          ['octagon-alert', 'الاعتراض على إيقاف الإعانة المالية لذوي الإعاقة', 'Objection to Disability Aid Suspension', 'تقديم اعتراض على إيقاف الإعانة المالية لذوي الإعاقة.', 'Filing an objection against suspension of financial aid for persons with disabilities.'],
+          ['calendar-check', 'حجز موعد مكتب العمل', 'Labor Office Appointment Booking', 'حجز موعد لك في مكتب العمل.', 'Booking an appointment at the labor office.'],
+          ['graduation-cap', 'إقرار مكافأة الطلبة الجامعيين ذوي الإعاقة', 'Disabled University Students Stipend', 'تقديم خدمة إقرار المكافأة للطلبة الجامعيين ذوي الإعاقة.', 'Applying for the stipend for university students with disabilities.'],
+          ['file-check', 'إصدار وتوثيق وثيقة العمل الحر', 'Freelance Document Issuance & Authentication', 'إصدار وثيقة العمل الحر وتوثيقها.', 'Issuing and authenticating the freelance document.'],
+          ['laptop', 'إنشاء وتوثيق عقد عمل عن بعد', 'Remote Work Contract Creation & Authentication', 'إنشاء عقد عمل عن بعد وتوثيقه.', 'Creating and authenticating a remote work contract.'],
+          ['clipboard-list', 'تقييم الإعاقة', 'Disability Assessment', 'التقديم على تقييم الإعاقة ومتابعة النتيجة.', 'Applying for a disability assessment and following the result.'],
+          ['banknote', 'الإعانة المالية لأشخاص ذوي الإعاقة', 'Financial Aid for Persons with Disabilities', 'التسجيل في الإعانة المالية لذوي الإعاقة.', 'Registering for financial aid for persons with disabilities.'],
+          ['stethoscope', 'صرف الأجهزة الطبية المعينة', 'Assistive Medical Devices', 'طلب صرف الأجهزة الطبية المعينة.', 'Requesting assistive medical devices.'],
+          ['award', 'الشهادات الرقمية لتسهيلات المرورية', 'Digital Certificates for Traffic Facilities', 'إصدار الشهادات الرقمية للتسهيلات المرورية لذوي الإعاقة.', 'Issuing digital certificates for traffic facilities for persons with disabilities.'],
+          ['bus', 'إصدار بطاقة تخفيض أجور الاركاب لذوي الإعاقة', 'Fare Discount Card for Persons with Disabilities', 'إصدار بطاقة تخفيض أجور الركاب لذوي الإعاقة ومرافقيهم.', 'Issuing fare discount cards for persons with disabilities and companions.'],
+          ['badge-check', 'إصدار وتجديد رخص العمل', 'Work Permits Issuance & Renewal', 'إصدار رخص العمل وتجديدها وسداد المقابل المالي.', 'Issuing and renewing work permits and paying levies.'],
+          ['upload', 'رفع ملف حماية الأجور', 'Wage Protection File Upload', 'رفع ملفات الأجور الشهرية لنظام حماية الأجور.', 'Uploading monthly payroll files to the wage protection system.'],
+          ['wallet', 'حساب المواطن', 'Citizen Account', 'التسجيل وتحديث البيانات والاعتراض على الأهلية.', 'Registration, data updates and eligibility objections.'],
+          ['plane', 'إصدار تأشيرات ذوي الإعاقة', 'Visas for Persons with Disabilities', 'إصدار تأشيرات الاستقدام لذوي الإعاقة.', 'Issuing recruitment visas for persons with disabilities.']
+        ]
+      },
+      {
         id: 'labor', icon: 'hard-hat', img: 'team.jpg',
-        title: { ar: 'الموارد البشرية والعمالة (قوى – مساند – مدد)', en: 'HR & Labor (Qiwa – Musaned – Mudad)' },
+        title: { ar: 'منصة قوى ومدد ومساند', en: 'Qiwa, Mudad & Musaned' },
         desc: { ar: 'كل ما تحتاجه منشأتك وعمالتك المنزلية', en: 'Everything your business and domestic workers need' },
         items: [
           ['building', 'فتح وتحديث ملف المنشأة', 'Establishment File Setup', 'فتح ملف المنشأة في قوى وتحديث بياناتها.', 'Opening and updating the establishment file on Qiwa.'],
-          ['badge-check', 'إصدار وتجديد رخص العمل', 'Work Permits', 'إصدار رخص العمل وتجديدها وسداد المقابل المالي.', 'Issuing and renewing work permits and paying levies.'],
-          ['arrow-left-right', 'نقل الخدمات', 'Service Transfer', 'نقل خدمات العامل بين المنشآت وفق الأنظمة.', 'Transferring workers between establishments per regulations.'],
-          ['pen-line', 'تعديل المهنة', 'Occupation Change', 'تعديل مهنة العامل بما يطابق عمله الفعلي.', 'Changing an employee’s occupation to match the actual job.'],
+          ['pen-line', 'تعديل المهنة في قوى', 'Occupation Change (Qiwa)', 'تعديل مهنة العامل بما يطابق عمله الفعلي.', 'Changing an employee’s occupation to match the actual job.'],
           ['file-signature', 'توثيق عقود العمل', 'Employment Contract Authentication', 'توثيق العقود إلكترونياً في منصة قوى.', 'Authenticating contracts electronically on Qiwa.'],
           ['chart-column', 'نطاقات وشهادة السعودة', 'Nitaqat & Saudization Certificate', 'متابعة نطاق المنشأة واستخراج شهادة السعودة.', 'Tracking Nitaqat status and issuing the Saudization certificate.'],
           ['wallet', 'حماية الأجور (مدد)', 'Wage Protection (Mudad)', 'رفع ملفات الأجور والالتزام بنظام حماية الأجور.', 'Uploading payroll files and staying WPS-compliant.'],
@@ -275,15 +340,86 @@ window.CATALOG = {
           ['home', 'العمالة المنزلية (مساند)', 'Domestic Workers (Musaned)', 'طلب الاستقدام وتوثيق العقد ونقل خدمات العمالة المنزلية.', 'Recruitment, contract authentication and transfers for domestic workers.'],
           ['user-x', 'بلاغ الانقطاع عن العمل', 'Absence from Work Report', 'تقديم بلاغ الانقطاع أو إلغاؤه وفق النظام.', 'Filing or cancelling absence-from-work reports.'],
           ['handshake', 'التسوية الودية للخلافات العمالية', 'Amicable Labor Settlement', 'تقديم طلب التسوية الودية ومتابعة الجلسات.', 'Filing for amicable settlement and following sessions.'],
-          ['door-closed', 'إنهاء العلاقة التعاقدية', 'Contract Termination', 'إنهاء العقد وتسوية المستحقات والخروج النهائي.', 'Ending contracts, settling dues and final exit.']
+          ['door-closed', 'إنهاء العلاقة التعاقدية', 'Contract Termination', 'إنهاء العقد وتسوية المستحقات والخروج النهائي.', 'Ending contracts, settling dues and final exit.'],
+          ['smartphone', 'منصة قوى', 'Qiwa Platform', 'إدارة حساب منصة قوى للمنشأة والموظفين وإنجاز طلباتها.', 'Managing your establishment’s Qiwa account, employees and requests.'],
+          ['arrow-left-right', 'نقل الخدمات عبر قوى', 'Service Transfer via Qiwa', 'نقل خدمات العامل بين المنشآت عبر منصة قوى.', 'Transferring workers between establishments through Qiwa.']
+        ]
+      },
+      {
+        id: 'cards', icon: 'badge-check', img: 'docs-work.jpg',
+        title: { ar: 'الشهادات الصحية والبطاقات والتأمين', en: 'Health Certificates, Cards & Insurance' },
+        desc: { ar: 'الشهادات الصحية وكروت العمل والتأمين الطبي وتأمين المركبات', en: 'Health certificates, work cards, medical insurance and vehicle insurance' },
+        items: [
+          ['heart-pulse', 'إصدار الشهادة الصحية', 'Health Certificate Issuance', 'إصدار الشهادة الصحية للعاملين في المنشآت الغذائية والخدمية.', 'Issuing health certificates for food and service establishment workers.'],
+          ['refresh-cw', 'تجديد الشهادة الصحية', 'Health Certificate Renewal', 'تجديد الشهادة الصحية قبل انتهائها.', 'Renewing the health certificate before expiry.'],
+          ['copy', 'بدل فاقد لشهادة صحية', 'Lost Health Certificate Replacement', 'استخراج بدل فاقد للشهادة الصحية.', 'Replacing a lost health certificate.'],
+          ['id-card', 'إصدار كرت العمل', 'Work Card Issuance', 'إصدار كرت العمل للعامل.', 'Issuing a work card for a worker.'],
+          ['refresh-cw', 'تجديد كرت العمل', 'Work Card Renewal', 'تجديد كرت العمل وسداد الرسوم.', 'Renewing the work card and paying fees.'],
+          ['truck', 'كرت التشغيل للنقليات', 'Transport Operating Card', 'إصدار وتجديد كرت التشغيل لمركبات النقل.', 'Issuing and renewing the operating card for transport vehicles.'],
+          ['heart-pulse', 'تأمين طبي للأفراد', 'Medical Insurance — Individuals', 'مقارنة باقات التأمين الطبي للأفراد والعائلات وإصدار الوثيقة.', 'Comparing individual and family medical insurance plans and issuing the policy.'],
+          ['building-2', 'تأمين طبي للمؤسسات والشركات', 'Medical Insurance — Companies', 'عروض التأمين الطبي للمنشآت والموظفين وفق متطلبات مجلس الضمان.', 'Medical insurance quotes for establishments and staff per CCHI requirements.'],
+          ['car', 'تأمين سيارات', 'Car Insurance', 'مقارنة عروض التأمين الشامل وضد الغير وإصدار الوثيقة.', 'Comparing comprehensive and third-party quotes and issuing policies.']
+        ]
+      },
+      {
+        id: 'electricity', icon: 'zap', img: 'electric.jpg',
+        title: { ar: 'شركة الكهرباء', en: 'Saudi Electricity Company' },
+        desc: { ar: 'العدادات والحسابات وخدمات الكهرباء', en: 'Meters, accounts and electricity services' },
+        items: [
+          ['plus-circle', 'إضافة عداد', 'Add a Meter', 'طلب إضافة عداد كهرباء جديد.', 'Requesting a new electricity meter.'],
+          ['file-check', 'توثيق العداد', 'Meter Authentication', 'توثيق ملكية العداد وربطه بالهوية.', 'Authenticating meter ownership and linking it to the ID.'],
+          ['arrow-left-right', 'نقل عداد', 'Meter Transfer', 'نقل العداد إلى موقع أو اسم آخر.', 'Moving the meter to another location or name.'],
+          ['plug-zap', 'إيصال الخدمة الكهربائية', 'Connecting Electricity Service', 'إيصال الخدمة الكهربائية لمبنى أو منشأة جديدة.', 'Connecting electricity to a new building or establishment.'],
+          ['user-plus', 'إضافة حساب', 'Add an Account', 'إضافة حساب كهرباء جديد.', 'Adding a new electricity account.'],
+          ['user-minus', 'إزالة الحساب', 'Remove an Account', 'إزالة حساب كهرباء.', 'Removing an electricity account.'],
+          ['file-badge', 'شهادة إطلاق خدمة كهربائية', 'Electricity Service Launch Certificate', 'إصدار شهادة إطلاق الخدمة الكهربائية.', 'Issuing the electricity service launch certificate.'],
+          ['split', 'تجزئة (دمج عداد)', 'Meter Splitting / Merging', 'تجزئة العداد أو دمج عدادين.', 'Splitting a meter or merging two meters.'],
+          ['gauge', 'تقوية العداد', 'Meter Upgrade', 'رفع سعة العداد لتحمل أحمال أكبر.', 'Upgrading meter capacity to handle larger loads.'],
+          ['replace', 'استبدال العداد بنفس السعة', 'Meter Replacement (Same Capacity)', 'استبدال العداد التالف بنفس السعة.', 'Replacing a faulty meter with the same capacity.'],
+          ['timer-reset', 'إعادة عداد مزال مؤقت', 'Reinstating a Temporarily Removed Meter', 'إعادة تركيب عداد أزيل مؤقتاً.', 'Reinstalling a temporarily removed meter.'],
+          ['calendar-range', 'خطة الأقساط', 'Installment Plan', 'التقديم على خطة تقسيط الفواتير.', 'Applying for a bill installment plan.'],
+          ['siren', 'خدمة الاحتياجات الماسة', 'Urgent Needs Service', 'طلب خدمة الاحتياجات الماسة لدعم الفواتير.', 'Requesting the urgent-needs service for bill support.']
+        ]
+      },
+      {
+        id: 'water', icon: 'droplets', img: 'pipes.jpg',
+        title: { ar: 'شركة المياه الوطنية', en: 'National Water Company' },
+        desc: { ar: 'بلاغات وصرف وعدادات وتوصيلات المياه', en: 'Water reports, sewage, meters and connections' },
+        items: [
+          ['megaphone', 'بلاغات المياه', 'Water Reports', 'تقديم بلاغات التسريب والانقطاع ومتابعتها.', 'Filing and following up leak and outage reports.'],
+          ['waves', 'خدمات صهاريج المياه', 'Water Tanker Services', 'طلب صهريج مياه وتوصيله.', 'Requesting a water tanker delivery.'],
+          ['hammer', 'خدمات الترميم أو إعادة البناء', 'Restoration & Rebuilding Services', 'طلبات الترميم أو إعادة بناء الخدمات.', 'Restoration or rebuilding service requests.'],
+          ['file-text', 'خطاب التعريف', 'Introduction Letter', 'إصدار خطاب التعريف من شركة المياه.', 'Issuing an introduction letter from the water company.'],
+          ['calendar-check', 'خدمات المواعيد', 'Appointment Services', 'حجز المواعيد في شركة المياه الوطنية.', 'Booking appointments with the National Water Company.'],
+          ['refresh-cw', 'تحديث البيانات', 'Data Update', 'تحديث بيانات الحساب والعداد.', 'Updating account and meter data.'],
+          ['building', 'تعديل معلومات العقار', 'Property Information Amendment', 'تعديل بيانات العقار المسجلة.', 'Amending registered property data.'],
+          ['gauge', 'خدمات العدادات', 'Meter Services', 'طلبات العدادات: تركيب ونقل واستبدال.', 'Meter requests: installation, transfer and replacement.'],
+          ['log-in', 'إدخال العداد', 'Meter Installation', 'طلب إدخال عداد المياه للعقار.', 'Requesting a water meter connection for the property.']
+        ]
+      },
+      {
+        id: 'workvisas', icon: 'stamp', img: 'meeting.jpg',
+        title: { ar: 'تأشيرات العمالة والتفويض', en: 'Work Visas & Authorization' },
+        desc: { ar: 'إصدار وتفويض تأشيرات العمالة المهنية والمنزلية والسائقين والزراعية', en: 'Issuing and authorizing visas for professional, domestic, driver and agricultural workers' },
+        items: [
+          ['hard-hat', 'إصدار تأشيرة عامل مهني', 'Professional Worker Visa', 'إصدار تأشيرة استقدام عامل مهني للمنشأة.', 'Issuing a recruitment visa for a professional worker.'],
+          ['home', 'إصدار تأشيرة عامل منزلي', 'Domestic Worker Visa', 'إصدار تأشيرة استقدام عامل منزلي.', 'Issuing a recruitment visa for a domestic worker.'],
+          ['car-front', 'إصدار تأشيرة سائق خاص', 'Private Driver Visa', 'إصدار تأشيرة استقدام سائق خاص.', 'Issuing a recruitment visa for a private driver.'],
+          ['wheat', 'إصدار تأشيرة عامل زراعي', 'Agricultural Worker Visa', 'إصدار تأشيرة استقدام عامل زراعي.', 'Issuing a recruitment visa for an agricultural worker.'],
+          ['file-signature', 'تفويض تأشيرة مهنية', 'Professional Visa Authorization', 'تفويض مكتب الاستقدام لاستخدام التأشيرة المهنية.', 'Authorizing a recruitment office to use the professional visa.'],
+          ['file-signature', 'تفويض تأشيرة عامل منزلي', 'Domestic Worker Visa Authorization', 'تفويض مكتب الاستقدام لاستخدام تأشيرة العامل المنزلي.', 'Authorizing a recruitment office to use the domestic worker visa.'],
+          ['file-signature', 'تفويض تأشيرة سائق خاص', 'Private Driver Visa Authorization', 'تفويض مكتب الاستقدام لاستخدام تأشيرة السائق الخاص.', 'Authorizing a recruitment office to use the private driver visa.'],
+          ['file-signature', 'تفويض تأشيرة عامل زراعي', 'Agricultural Visa Authorization', 'تفويض مكتب الاستقدام لاستخدام تأشيرة العامل الزراعي.', 'Authorizing a recruitment office to use the agricultural visa.']
         ]
       },
       {
         id: 'commerce', icon: 'store', img: 'docs-sign.jpg',
-        title: { ar: 'التجارة والسجلات التجارية', en: 'Commerce & Commercial Registration' },
+        title: { ar: 'المركز السعودي للأعمال والسجلات التجارية', en: 'Saudi Business Center & Commercial Registration' },
         desc: { ar: 'السجل التجاري والأسماء والعلامات والغرف التجارية', en: 'CRs, trade names, trademarks and chambers of commerce' },
         items: [
-          ['file-plus', 'قيد السجل التجاري', 'Commercial Registration', 'إصدار السجل التجاري للمؤسسات والشركات عبر المركز السعودي للأعمال.', 'Issuing CRs for sole proprietorships and companies via the Saudi Business Center.'],
+          ['file-plus', 'إصدار السجل التجاري', 'Commercial Registration Issuance', 'إصدار السجل التجاري للمؤسسات والشركات عبر المركز السعودي للأعمال.', 'Issuing CRs for sole proprietorships and companies via the Saudi Business Center.'],
+          ['refresh-cw', 'تجديد السجل التجاري', 'Commercial Registration Renewal', 'تجديد السجل التجاري وسداد الرسوم.', 'Renewing the CR and paying fees.'],
+          ['arrow-left-right', 'نقل السجل التجاري', 'Commercial Registration Transfer', 'نقل السجل التجاري إلى مدينة أو مالك آخر.', 'Transferring the CR to another city or owner.'],
           ['calendar-check', 'التأكيد السنوي للسجل', 'Annual CR Confirmation', 'تأكيد بيانات السجل التجاري سنوياً لتجنب الإيقاف.', 'Confirming CR data annually to avoid suspension.'],
           ['pen-line', 'تعديل السجل التجاري', 'CR Amendment', 'تعديل النشاط أو العنوان أو المدير أو رأس المال.', 'Changing activity, address, manager or capital.'],
           ['file-x', 'شطب السجل التجاري', 'CR Cancellation', 'شطب السجل وإنهاء الالتزامات المرتبطة به.', 'Cancelling the CR and closing related obligations.'],
@@ -292,7 +428,8 @@ window.CATALOG = {
           ['landmark', 'اشتراك الغرفة التجارية', 'Chamber of Commerce Membership', 'الاشتراك والتجديد وتصديق الخطابات والمستندات.', 'Membership, renewal and attestation of letters and documents.'],
           ['globe', 'شهادة المنشأ', 'Certificate of Origin', 'إصدار شهادات المنشأ للصادرات.', 'Issuing certificates of origin for exports.'],
           ['shopping-cart', 'توثيق المتاجر الإلكترونية', 'E-Store Verification', 'توثيق المتجر الإلكتروني ووثيقة العمل الحر.', 'E-store verification and freelance document.'],
-          ['package-check', 'شهادات المطابقة (سابر)', 'Conformity Certificates (SABER)', 'إصدار شهادات المطابقة للمنتجات المستوردة.', 'Product conformity certificates for imports.']
+          ['package-check', 'شهادات المطابقة (سابر)', 'Conformity Certificates (SABER)', 'إصدار شهادات المطابقة للمنتجات المستوردة.', 'Product conformity certificates for imports.'],
+          ['file-text', 'الإفادة التجارية', 'Commercial Statement', 'إصدار الإفادة التجارية بيانات السجل التجاري.', 'Issuing the commercial statement of CR data.']
         ]
       },
       {
@@ -317,7 +454,6 @@ window.CATALOG = {
         items: [
           ['store', 'رخصة النشاط التجاري', 'Commercial Activity License', 'إصدار وتجديد رخصة المحل عبر منصة بلدي.', 'Issuing and renewing shop licenses on Balady.'],
           ['signpost', 'رخصة اللوحات التجارية', 'Signboard License', 'ترخيص اللوحة التجارية وفق الاشتراطات.', 'Licensing shop signboards per requirements.'],
-          ['heart-pulse', 'الشهادات الصحية', 'Health Certificates', 'إصدار وتجديد الشهادات الصحية للعاملين.', 'Issuing and renewing worker health certificates.'],
           ['hard-hat', 'رخص البناء والترميم', 'Building & Renovation Permits', 'رخص البناء والإضافة والترميم والتسوير.', 'Permits for building, extensions, renovation and fencing.'],
           ['shovel', 'رخص الحفريات', 'Excavation Permits', 'تصاريح الحفر وتمديد الخدمات.', 'Excavation and utility connection permits.'],
           ['tent', 'تصاريح الأنشطة المؤقتة', 'Temporary Activity Permits', 'تصاريح الأكشاك والفعاليات والأنشطة الموسمية.', 'Permits for kiosks, events and seasonal activities.'],
@@ -344,27 +480,50 @@ window.CATALOG = {
         title: { ar: 'التأمينات الاجتماعية', en: 'Social Insurance (GOSI)' },
         desc: { ar: 'تسجيل المنشأة والموظفين وشهادات الالتزام', en: 'Registering establishments and employees, compliance certificates' },
         items: [
-          ['building', 'تسجيل المنشأة في التأمينات', 'Establishment Registration', 'تسجيل المنشأة وفتح ملف التأمينات.', 'Registering the establishment and opening a GOSI file.'],
-          ['user-plus', 'تسجيل واستبعاد المشتركين', 'Adding / Removing Contributors', 'تسجيل الموظفين الجدد واستبعاد المنتهية خدماتهم.', 'Registering new employees and removing leavers.'],
-          ['wallet', 'تعديل الأجور', 'Wage Updates', 'تحديث أجور المشتركين بما يطابق العقود.', 'Updating wages to match contracts.'],
-          ['file-check', 'شهادة التأمينات', 'GOSI Certificate', 'استخراج شهادة الالتزام للمنشأة.', 'Issuing the establishment compliance certificate.'],
-          ['life-buoy', 'ساند وإصابات العمل', 'SANED & Work Injuries', 'طلب تعويض ساند والإبلاغ عن إصابات العمل.', 'SANED claims and occupational injury reports.'],
-          ['hand-coins', 'طلبات المعاش والتقاعد', 'Pension Requests', 'تجهيز طلبات المعاش ومتابعتها.', 'Preparing and tracking pension applications.']
+          ['building', 'تسجيل منشأة', 'Establishment Registration', 'تسجيل المنشأة في التأمينات الاجتماعية.', 'Registering the establishment with GOSI.'],
+          ['user-plus', 'تسجيل مشترك', 'Subscriber Registration', 'تسجيل الموظف مشتركاً في التأمينات.', 'Registering an employee as a GOSI subscriber.'],
+          ['user-minus', 'استبعاد مشترك', 'Subscriber Exclusion', 'استبعاد مشترك عند انتهاء الخدمة.', 'Excluding a subscriber at the end of service.'],
+          ['printer', 'طباعة تعريف بالراتب', 'Salary Certificate Printing', 'طباعة التعريف بالراتب من التأمينات.', 'Printing the GOSI salary certificate.'],
+          ['hand-coins', 'ساند', 'SANED (Unemployment Insurance)', 'التقديم على ساند ومتابعة الصرف.', 'Applying for SANED and following disbursement.'],
+          ['heart-pulse', 'إصابة العمل', 'Work Injury', 'تقديم بلاغ إصابة العمل ومتابعة التعويض.', 'Filing a work injury report and following compensation.'],
+          ['pen-line', 'تعديل الأجور', 'Wage Amendment', 'تعديل أجور المشتركين في التأمينات.', 'Amending subscribers’ wages with GOSI.'],
+          ['file-badge', 'شهادة التأمينات', 'GOSI Certificate', 'استخراج شهادة التأمينات الاجتماعية للمنشأة.', 'Issuing the GOSI certificate for the establishment.'],
+          ['hand-coins', 'طلبات المعاش والتقاعد', 'Pension & Retirement Requests', 'تقديم طلبات المعاش ومتابعتها.', 'Filing pension requests and following them up.'],
+          ['calendar-check', 'حجز موعد التأمينات', 'GOSI Appointment Booking', 'حجز موعد لك في التأمينات الاجتماعية.', 'Booking a GOSI appointment for you.']
         ]
       },
       {
         id: 'justice', icon: 'scale', img: 'docs-sign.jpg',
-        title: { ar: 'العدل والوكالات والتوثيق (ناجز)', en: 'Justice, POAs & Notarization (Najiz)' },
+        title: { ar: 'وزارة العدل (ناجز)', en: 'Ministry of Justice (Najiz)' },
         desc: { ar: 'الوكالات والصكوك والطلبات القضائية الإلكترونية', en: 'Powers of attorney, deeds and online court requests' },
         items: [
           ['file-signature', 'إصدار الوكالات الإلكترونية', 'Electronic Power of Attorney', 'إصدار وكالة عامة أو خاصة إلكترونياً.', 'Issuing general or specific POAs online.'],
           ['file-x', 'فسخ الوكالات', 'POA Revocation', 'فسخ الوكالة وإشعار الوكيل.', 'Revoking POAs and notifying the agent.'],
           ['folder-open', 'قيد الدعاوى وصحائف الدعوى', 'Filing Lawsuits', 'تجهيز صحيفة الدعوى وقيدها إلكترونياً بالتنسيق مع محامٍ.', 'Preparing and filing claims online in coordination with a lawyer.'],
           ['gavel', 'طلبات التنفيذ', 'Enforcement Requests', 'تقديم طلبات التنفيذ على السندات والأحكام.', 'Filing enforcement requests for instruments and judgments.'],
-          ['users', 'صك حصر الورثة', 'Inheritance Deed', 'استخراج صك حصر الورثة وتجهيز المستندات.', 'Issuing inheritance deeds and preparing documents.'],
           ['scroll-text', 'صكوك الولاية والإعالة', 'Guardianship & Dependency Deeds', 'استخراج صكوك الولاية والإعالة.', 'Issuing guardianship and dependency deeds.'],
           ['stamp', 'خدمات التوثيق', 'Notarization Services', 'توثيق العقود والإقرارات لدى الموثّقين المرخّصين.', 'Notarizing contracts and declarations with licensed notaries.'],
-          ['calendar-clock', 'حجز مواعيد المحاكم وكتابات العدل', 'Court & Notary Appointments', 'حجز المواعيد ومتابعة الجلسات والطلبات.', 'Booking appointments and tracking sessions and requests.']
+          ['calendar-clock', 'حجز مواعيد المحاكم وكتابات العدل', 'Court & Notary Appointments', 'حجز المواعيد ومتابعة الجلسات والطلبات.', 'Booking appointments and tracking sessions and requests.'],
+          ['heart-crack', 'فسخ نكاح', 'Marriage Annulment', 'تقديم طلب فسخ النكاح عبر ناجز.', 'Filing a marriage annulment request via Najiz.'],
+          ['wallet', 'طلب نفقة', 'Alimony Request', 'تقديم طلب نفقة ومتابعته.', 'Filing an alimony request and following it up.'],
+          ['house', 'طلب مسكن', 'Housing Request', 'تقديم طلب مسكن للمطلقة أو الحاضن.', 'Filing a housing request for the divorcee or custodian.'],
+          ['shirt', 'طلب كسوة', 'Clothing Allowance Request', 'تقديم طلب كسوة ومتابعته.', 'Filing a clothing allowance request and following it up.'],
+          ['file-signature', 'توثيق طلاق', 'Divorce Documentation', 'توثيق الطلاق إلكترونياً.', 'Documenting a divorce electronically.'],
+          ['truck', 'حجز مواعيد كتابات العدل المتنقلة', 'Mobile Notary Appointments', 'حجز موعد مع كتابة العدل المتنقلة.', 'Booking a mobile notary appointment.'],
+          ['baby', 'طلب خدمة حضانة', 'Custody Service Request', 'تقديم طلب حضانة ومتابعته.', 'Filing a custody request and following it up.'],
+          ['file-check', 'توثيق حضانة', 'Custody Documentation', 'توثيق الحضانة إلكترونياً.', 'Documenting custody electronically.'],
+          ['scroll-text', 'الوكالات', 'Powers of Attorney', 'إصدار وتعديل الوكالات إلكترونياً.', 'Issuing and amending powers of attorney electronically.']
+        ]
+      },
+      {
+        id: 'turkah', icon: 'scale', img: 'docs-sign.jpg',
+        title: { ar: 'منصة تركة', en: 'Turkah Platform' },
+        desc: { ar: 'حصر الورثة وقسمة التركات', en: 'Heirs’ inventories and estate division' },
+        items: [
+          ['file-text', 'إصدار حصر ورثة', 'Heirs Inventory Issuance', 'إصدار صك حصر الورثة عبر منصة تركة.', 'Issuing the heirs inventory deed through Turkah.'],
+          ['shield-check', 'التحقق من الوثائق', 'Document Verification', 'التحقق من وثائق التركة وصحتها.', 'Verifying estate documents and their validity.'],
+          ['binary', 'إصدار رقمنة حصر ورثة', 'Heirs Inventory Digitization', 'رقمنة حصر الورثة القديم وإصداره إلكترونياً.', 'Digitizing an older heirs inventory and issuing it electronically.'],
+          ['split', 'قسمة تركة اتفاقية', 'Agreed Estate Division', 'إعداد قسمة تركة اتفاقية بين الورثة.', 'Preparing an agreed estate division among heirs.']
         ]
       },
       {
@@ -378,7 +537,10 @@ window.CATALOG = {
           ['flag', 'تصديق السفارات والقنصليات', 'Embassy Attestation', 'تصديق المستندات لدى السفارات والقنصليات.', 'Attesting documents at embassies and consulates.'],
           ['graduation-cap', 'تصديق الشهادات الدراسية', 'Educational Certificate Attestation', 'تصديق الشهادات من جهة الإصدار والجهات المختصة.', 'Attesting certificates with issuers and authorities.'],
           ['landmark', 'تصديق الغرفة التجارية', 'Chamber Attestation', 'تصديق المستندات والخطابات التجارية.', 'Attesting commercial documents and letters.'],
-          ['stethoscope', 'تصديق التقارير الطبية', 'Medical Report Attestation', 'تصديق التقارير الطبية لاستخدامها رسمياً.', 'Attesting medical reports for official use.']
+          ['stethoscope', 'تصديق التقارير الطبية', 'Medical Report Attestation', 'تصديق التقارير الطبية لاستخدامها رسمياً.', 'Attesting medical reports for official use.'],
+          ['file-check', 'تصديق عقد العمل من الخارجية', 'Employment Contract Attestation (MOFA)', 'تصديق عقد العمل من وزارة الخارجية.', 'Attesting the employment contract with the Ministry of Foreign Affairs.'],
+          ['stamp', 'تصديق التأشيرة من الغرفة التجارية', 'Visa Attestation (Chamber of Commerce)', 'تصديق التأشيرة من الغرفة التجارية.', 'Attesting the visa with the Chamber of Commerce.'],
+          ['pen-tool', 'تصديق التوقيع والختم من الغرفة التجارية', 'Signature & Stamp Attestation (Chamber)', 'تصديق التوقيع والختم من الغرفة التجارية.', 'Attesting signature and stamp with the Chamber of Commerce.']
         ]
       },
       {
@@ -399,26 +561,53 @@ window.CATALOG = {
         title: { ar: 'الخدمات الاجتماعية والأسرية', en: 'Social & Family Services' },
         desc: { ar: 'برامج الدعم والضمان والتقاعد', en: 'Support programs, social security and retirement' },
         items: [
-          ['wallet', 'حساب المواطن', 'Citizen Account', 'التسجيل وتحديث البيانات والاعتراض على الأهلية.', 'Registration, data updates and eligibility objections.'],
           ['hand-heart', 'الضمان الاجتماعي المطوّر', 'Developed Social Security', 'التسجيل في الضمان ومتابعة الطلب.', 'Registering for social security and tracking applications.'],
           ['accessibility', 'خدمات الأشخاص ذوي الإعاقة', 'Persons with Disabilities Services', 'إصدار البطاقات والتسجيل في البرامج المخصصة.', 'Card issuance and enrollment in dedicated programs.'],
           ['hand-coins', 'التقاعد', 'Retirement', 'طلب التقاعد ومتابعة المستحقات.', 'Retirement applications and entitlement follow-up.'],
           ['briefcase', 'برامج دعم التوظيف (هدف)', 'Employment Support (HRDF)', 'التسجيل في برامج صندوق تنمية الموارد البشرية.', 'Enrollment in HRDF programs.'],
           ['heart-pulse', 'التأمين الطبي للعائلة والعمالة', 'Family & Worker Health Insurance', 'مقارنة عروض التأمين الطبي وإصدار الوثائق.', 'Comparing health insurance quotes and issuing policies.']
         ]
-      }
-      ,{
+      },
+      {
         id: 'daily', icon: 'zap', img: 'electric.jpg',
-        title: { ar: 'الكهرباء والمياه والخدمات اليومية', en: 'Utilities & Everyday Services' },
-        desc: { ar: 'فواتير وعدادات ومواعيد وطباعة — نخلّصها عنك', en: 'Bills, meters, appointments and paperwork — done for you' },
+        title: { ar: 'خدمات يومية', en: 'Everyday Services' },
+        desc: { ar: 'فواتير ومواعيد واتصالات وطباعة — نخلّصها عنك', en: 'Bills, appointments, telecom and printing — done for you' },
         items: [
-          ['zap', 'خدمات الكهرباء والعدادات', 'Electricity Accounts & Meters', 'فتح حساب ونقل ملكية العداد وفصل الخدمة وإعادتها والاعتراض على الفاتورة.', 'Opening accounts, transferring meter ownership, disconnection/reconnection and bill disputes.'],
-          ['droplets', 'خدمات المياه', 'Water Services', 'طلب توصيل المياه والصرف ونقل العداد ومتابعة البلاغات مع شركة المياه.', 'Water and sewage connection requests, meter transfers and follow-up with the water company.'],
           ['receipt', 'سداد الفواتير والرسوم', 'Bill & Fee Payments', 'سداد الفواتير الحكومية والمخالفات والرسوم عبر سداد ومتابعة الإيصالات.', 'Paying government bills, fines and fees via SADAD and keeping the receipts.'],
           ['calendar-check', 'حجز المواعيد الحكومية والصحية', 'Government & Health Appointments', 'حجز المواعيد في الجهات الحكومية والمستشفيات عبر أبشر وصحتي.', 'Booking appointments with government offices and hospitals via Absher and Sehhaty.'],
           ['smartphone', 'خدمات الاتصالات', 'Telecom Services', 'نقل ملكية الأرقام وإلغاؤها والاستعلام عن الأرقام المسجلة باسمك.', 'Transferring and cancelling numbers, and checking numbers registered in your name.'],
-          ['printer', 'الطباعة وتعبئة النماذج', 'Printing & Form Filling', 'تعبئة النماذج والطلبات الإلكترونية وطباعة المستندات وتصويرها.', 'Filling out forms and online applications, printing and scanning documents.'],
-          ['mail', 'العنوان الوطني وسبل', 'National Address & SPL', 'تسجيل العنوان الوطني وتحديثه وإصدار إثبات العنوان.', 'Registering and updating your national address and issuing proof of address.']
+          ['printer', 'الطباعة وتعبئة النماذج', 'Printing & Form Filling', 'تعبئة النماذج والطلبات الإلكترونية وطباعة المستندات وتصويرها.', 'Filling out forms and online applications, printing and scanning documents.']
+        ]
+      },
+      {
+        id: 'others', icon: 'landmark', img: 'meeting.jpg',
+        title: { ar: 'جهات ومنصات حكومية وخيرية', en: 'Other Government & Charity Platforms' },
+        desc: { ar: 'منصات حكومية وجمعيات ودعم سكني وتسجيل وظائف وجامعات', en: 'Government platforms, charities, housing support, jobs and university registration' },
+        items: [
+          ['building-2', 'مكتب العمل', 'Labor Office', 'متابعة معاملاتك في مكتب العمل وإنجازها.', 'Handling your labor office transactions.'],
+          ['wheat', 'الزراعة', 'Agriculture', 'خدمات وزارة البيئة والمياه والزراعة وتراخيصها.', 'Services and licenses of the Ministry of Environment, Water and Agriculture.'],
+          ['scale', 'منصة ناجز', 'Najiz Platform', 'إنجاز معاملاتك القضائية عبر منصة ناجز.', 'Completing your judicial transactions through Najiz.'],
+          ['scroll-text', 'منصة تركه', 'Turkah Platform', 'خدمات حصر الورثة وقسمة التركات.', 'Heirs inventory and estate division services.'],
+          ['chart-candlestick', 'منصة البورصة العقارية', 'Real Estate Exchange Platform', 'التسجيل في البورصة العقارية ومتابعة الصفقات.', 'Registering on the real estate exchange and following deals.'],
+          ['building', 'دعم الإسكان التنموي', 'Developmental Housing Support', 'التقديم على دعم الإسكان التنموي ومتابعة الطلب.', 'Applying for developmental housing support and following up.'],
+          ['house', 'الدعم السكني', 'Housing Support', 'التقديم على الدعم السكني عبر سكني ومتابعته.', 'Applying for housing support via Sakani and following up.'],
+          ['heart-handshake', 'الجمعية الخيرية للإسكان', 'Housing Charity Association', 'التقديم على خدمات الجمعية الخيرية للإسكان.', 'Applying for the housing charity association’s services.'],
+          ['heart-handshake', 'جمعية البر الخيرية', 'Al-Birr Charity Society', 'التقديم على خدمات جمعية البر الخيرية.', 'Applying for Al-Birr Charity Society services.'],
+          ['gavel', 'رفع دعوى لمكتب العامل', 'Filing a Claim with the Labor Office', 'تجهيز ورفع دعوى عمالية لمكتب العمل.', 'Preparing and filing a labor claim with the labor office.'],
+          ['landmark', 'المحكمة العمالية', 'Labor Court', 'متابعة القضايا العمالية لدى المحكمة العمالية.', 'Following labor cases at the labor court.'],
+          ['flame', 'الدفاع المدني', 'Civil Defense', 'خدمات وتراخيص السلامة لدى الدفاع المدني.', 'Civil defense services and safety licenses.'],
+          ['users', 'الأحوال المدنية', 'Civil Affairs', 'خدمات الأحوال المدنية وإنجازها.', 'Civil Affairs services and transactions.'],
+          ['calendar-check', 'حجز المواعيد', 'Appointment Booking', 'حجز موعد لك في أي جهة حكومية.', 'Booking an appointment for you at any government entity.']
+        ]
+      },
+      {
+        id: 'personal', icon: 'file-pen-line', img: 'consult.jpg',
+        title: { ar: 'الوظائف والمعاريض والسير الذاتية', en: 'Jobs, Petitions & CVs' },
+        desc: { ar: 'التقديم على الوظائف وكتابة المعاريض وإعداد السير الذاتية', en: 'Job applications, petition writing and CV preparation' },
+        items: [
+          ['briefcase', 'التقديم على الوظائف', 'Job Applications', 'التقديم على الوظائف الحكومية والخاصة وتجهيز ملفاتك.', 'Applying for government and private jobs and preparing your files.'],
+          ['file-pen-line', 'كتابة المعاريض', 'Petition Writing', 'كتابة المعاريض والخطابات الرسمية بصياغة سليمة.', 'Writing petitions and official letters properly.'],
+          ['file-user', 'عمل CV عربي وانجليزي', 'Arabic & English CV', 'إعداد سيرة ذاتية احترافية بالعربية والإنجليزية.', 'Preparing a professional CV in Arabic and English.']
         ]
       }
     ]
@@ -488,7 +677,8 @@ window.CATALOG = {
           ['globe', 'آيلتس وتوفل', 'IELTS & TOEFL', 'حجز موعد الاختبار وخطة تحضير مناسبة لهدفك.', 'Booking test dates and a prep plan for your target score.'],
           ['presentation', 'الرخصة المهنية للمعلمين', 'Teacher Professional License', 'التسجيل في اختبارات الرخصة المهنية والتحضير لها.', 'Registering and preparing for teacher licensing exams.'],
           ['stethoscope', 'اختبارات التخصصات الصحية', 'Health Specialties Exams', 'حجز مواعيد اختبارات الهيئة والتحضير لها.', 'Booking and preparing for SCFHS exams.'],
-          ['target', 'الاختبارات التجريبية', 'Mock Exams', 'اختبارات محاكية للواقع مع تحليل نقاط الضعف.', 'Realistic mock tests with weakness analysis.']
+          ['target', 'الاختبارات التجريبية', 'Mock Exams', 'اختبارات محاكية للواقع مع تحليل نقاط الضعف.', 'Realistic mock tests with weakness analysis.'],
+          ['clipboard-check', 'التسجيل في اختبارات القدرات والقياس', 'Qudurat & Qiyas Registration', 'التسجيل في اختبارات القدرات والقياس وحجز المواعيد.', 'Registering for Qudurat and Qiyas tests and booking dates.']
         ]
       },
       {
@@ -503,22 +693,57 @@ window.CATALOG = {
           ['lightbulb', 'الإرشاد في منهجية البحث', 'Research Methodology Mentoring', 'جلسات توجيهية لاختيار العنوان وبناء الخطة والمنهج.', 'Mentoring sessions on topic choice, proposal and method.'],
           ['scan-text', 'فحص نسبة الاقتباس', 'Similarity Check', 'فحص نسبة التشابه وإرشادك لتحسين التوثيق.', 'Similarity checks and guidance to improve citations.'],
           ['user-round-pen', 'الدروس الخصوصية والتقوية', 'Private Tutoring', 'معلمون متخصصون حضورياً أو عن بُعد لجميع المراحل.', 'Specialist tutors in-person or online for all levels.'],
-          ['mic', 'دورات اللغة الإنجليزية', 'English Language Courses', 'برامج محادثة وكتابة أكاديمية لجميع المستويات.', 'Conversation and academic writing programs for all levels.'],
-          ['presentation', 'تصميم العروض التقديمية', 'Presentation Design', 'تصميم احترافي لعروضك بمحتواك أنت.', 'Professional design for presentations built on your content.']
+          ['mic', 'دورات اللغة الإنجليزية', 'English Language Courses', 'برامج محادثة وكتابة أكاديمية لجميع المستويات.', 'Conversation and academic writing programs for all levels.']
+        ]
+      },
+      {
+        id: 'works', icon: 'notebook-pen', img: 'study.jpg',
+        title: { ar: 'الأعمال الدراسية والبحوث', en: 'Coursework & Research' },
+        desc: { ar: 'أوراق العمل والمطويات والملازم والتقارير والبحوث وإعداد المشاريع', en: 'Worksheets, brochures, notes, reports, research and project preparation' },
+        items: [
+          ['file-text', 'أوراق عمل', 'Worksheets', 'إعداد أوراق عمل منظمة للمواد الدراسية.', 'Preparing organized worksheets for school subjects.'],
+          ['book-open', 'مطويات', 'Brochures', 'تصميم مطويات تعليمية جاهزة للطباعة.', 'Designing print-ready educational brochures.'],
+          ['network', 'خرائط مفاهيم', 'Concept Maps', 'إعداد خرائط مفاهيم توضح الدروس بصرياً.', 'Preparing concept maps that explain lessons visually.'],
+          ['notebook', 'ملازم طلابية', 'Student Study Notes', 'تجميع وتنسيق ملازم المواد الدراسية.', 'Compiling and formatting study notes.'],
+          ['clipboard-list', 'خطة بحث', 'Research Proposal', 'المساعدة في إعداد خطة البحث وتنظيم عناصرها.', 'Helping prepare a research plan and organize its sections.'],
+          ['file-bar-chart', 'تقارير', 'Reports', 'إعداد وتنسيق التقارير الدراسية.', 'Preparing and formatting academic reports.'],
+          ['folder-kanban', 'مشاريع', 'Projects', 'إعداد المشاريع الدراسية وتجهيز عرضها.', 'Preparing school projects and getting them ready to present.'],
+          ['graduation-cap', 'رسائل تخرج', 'Graduation Theses', 'دعم إعداد وتنسيق رسائل التخرج حسب لائحة الجامعة.', 'Support preparing and formatting graduation theses per university rules.'],
+          ['pencil-ruler', 'حل واجبات وتمارين', 'Homework & Exercises Help', 'مساعدة في فهم وحل الواجبات والتمارين وشرحها.', 'Help understanding, solving and explaining homework and exercises.'],
+          ['flask-conical', 'بحوث علمية', 'Scientific Research', 'دعم إعداد البحوث العلمية وتنظيمها.', 'Support in preparing and structuring scientific research.'],
+          ['book-marked', 'بحوث أكاديمية', 'Academic Research', 'دعم إعداد البحوث الأكاديمية وتوثيق المراجع.', 'Support preparing academic research and citing references.'],
+          ['text', 'تلخيص', 'Summarization', 'تلخيص الكتب والمقررات والمحاضرات.', 'Summarizing books, courses and lectures.']
+        ]
+      },
+      {
+        id: 'design', icon: 'presentation', img: 'students.jpg',
+        title: { ar: 'العروض والتصاميم وتجهيز الملفات', en: 'Presentations, Designs & File Prep' },
+        desc: { ar: 'عروض بوربوينت وتصاميم وشهادات وتجهيز وتحويل الملفات', en: 'PowerPoint presentations, designs, certificates, and preparing/converting files' },
+        items: [
+          ['presentation', 'عروض تقديمية', 'Presentations', 'تصميم عروض تقديمية احترافية للمدرسة والجامعة.', 'Designing professional presentations for school and university.'],
+          ['monitor-play', 'عروض بوربوينت', 'PowerPoint Presentations', 'إعداد عروض بوربوينت منسقة ومتحركة.', 'Preparing well-formatted, animated PowerPoint presentations.'],
+          ['folder-check', 'تجهيز الملفات', 'File Preparation', 'تجهيز وترتيب ملفاتك الدراسية والرسمية.', 'Preparing and organizing your study and official files.'],
+          ['award', 'شهادات وتصاميم', 'Certificates & Designs', 'تصميم الشهادات والبطاقات والتصاميم المخصصة.', 'Designing certificates, cards and custom designs.'],
+          ['file-output', 'تحويل الملفات الى PDF', 'Convert Files to PDF', 'تحويل ملفاتك إلى PDF بجودة عالية.', 'Converting your files to high-quality PDF.'],
+          ['file-user', 'عمل سيرة ذاتية', 'CV Preparation', 'إعداد سيرة ذاتية احترافية.', 'Preparing a professional CV.']
         ]
       },
       {
         id: 'schools', icon: 'school', img: 'students.jpg',
-        title: { ar: 'خدمات المدارس والتعليم العام', en: 'Schools & K-12 Services' },
+        title: { ar: 'المدارس والأنظمة التعليمية', en: 'Schools & Education Systems' },
         desc: { ar: 'تسجيل ونقل ومتابعة لأبنائك', en: 'Enrollment, transfers and follow-up for your children' },
         items: [
-          ['user-plus', 'تسجيل الطلاب المستجدين', 'New Student Enrollment', 'تسجيل الطلاب في المدارس الحكومية عبر نظام نور.', 'Enrolling students in public schools via the Noor system.'],
-          ['arrow-left-right', 'نقل الطالب بين المدارس', 'School Transfers', 'إجراءات النقل بين المدارس الحكومية والأهلية.', 'Transfers between public and private schools.'],
+          ['user-plus', 'تسجيل الطلاب المستجدين', 'New Student Enrollment', 'تسجيل الطلاب المستجدين في المدارس الحكومية والأهلية.', 'Enrolling new students in public and private schools.'],
           ['search', 'البحث عن المدارس الأهلية والعالمية', 'Private & International Schools', 'مقارنة المدارس والمناهج والرسوم وحجز المقعد.', 'Comparing schools, curricula and fees and reserving a seat.'],
           ['baby', 'تسجيل رياض الأطفال', 'Kindergarten Enrollment', 'التسجيل في رياض الأطفال الحكومية والأهلية.', 'Enrolling in public and private kindergartens.'],
-          ['bus', 'النقل المدرسي', 'School Transport', 'التسجيل في النقل المدرسي أو ترتيب نقل خاص آمن.', 'Registering for school buses or arranging safe private transport.'],
           ['file-text', 'الشهادات المدرسية وبدل الفاقد', 'School Certificates', 'طباعة الشهادات واستخراج بدل الفاقد.', 'Printing certificates and obtaining replacements.'],
-          ['book-open', 'برامج التأسيس والتقوية', 'Foundation & Support Programs', 'تأسيس القراءة والكتابة والرياضيات ومتابعة المستوى.', 'Reading, writing and math foundations with progress tracking.']
+          ['book-open', 'برامج التأسيس والتقوية', 'Foundation & Support Programs', 'تأسيس القراءة والكتابة والرياضيات ومتابعة المستوى.', 'Reading, writing and math foundations with progress tracking.'],
+          ['user-plus', 'تسجيل طالب', 'Student Registration', 'تسجيل الطالب في المدرسة وإكمال إجراءاتها.', 'Registering a student at school and completing procedures.'],
+          ['arrow-left-right', 'نقل طالب', 'Student Transfer', 'نقل الطالب بين المدارس وإنهاء أوراقه.', 'Transferring a student between schools and finishing paperwork.'],
+          ['bus', 'تسجيل طالب في النقل المدرسي', 'School Transport Registration', 'تسجيل الطالب في النقل المدرسي.', 'Registering a student in school transport.'],
+          ['monitor', 'نظام نور', 'Noor System', 'خدمات نظام نور: التسجيل والنقل والشهادات.', 'Noor system services: registration, transfer and certificates.'],
+          ['school', 'نظام مدرستي', 'Madrasati System', 'الدخول وإدارة حسابات منصة مدرستي.', 'Accessing and managing Madrasati platform accounts.'],
+          ['video', 'منصة تيمز', 'Teams Platform', 'تفعيل وإدارة حسابات منصة تيمز للتعليم.', 'Activating and managing Teams education accounts.']
         ]
       },
       {
@@ -526,12 +751,13 @@ window.CATALOG = {
         title: { ar: 'التدريب والمسار المهني', en: 'Training & Career' },
         desc: { ar: 'من مقاعد الدراسة إلى سوق العمل', en: 'From the classroom to the job market' },
         items: [
-          ['file-user', 'كتابة السيرة الذاتية', 'CV Writing', 'سيرة ذاتية احترافية بالعربي والإنجليزي متوافقة مع أنظمة التوظيف.', 'Professional Arabic/English CVs that pass applicant tracking systems.'],
+          ['file-user', 'عمل سيرة ذاتية (CV)', 'CV Preparation', 'سيرة ذاتية احترافية بالعربي والإنجليزي متوافقة مع أنظمة التوظيف.', 'Professional Arabic/English CVs that pass applicant tracking systems.'],
           ['briefcase', 'التدريب التعاوني والصيفي', 'Co-op & Summer Training', 'البحث عن جهة تدريب وتجهيز خطاب الطلب.', 'Finding a training placement and preparing the request letter.'],
           ['monitor', 'التسجيل في منصات التوظيف', 'Job Platforms Registration', 'التسجيل في جدارات ومنصات التوظيف الوطنية.', 'Registering on Jadarat and national job platforms.'],
           ['message-circle', 'التدريب على المقابلات', 'Interview Coaching', 'مقابلات تجريبية ونصائح عملية للنجاح.', 'Mock interviews and practical tips to succeed.'],
           ['linkedin', 'بناء الملف المهني على لينكدإن', 'LinkedIn Profile Building', 'ملف احترافي يلفت انتباه أصحاب العمل.', 'A professional profile that gets employers’ attention.'],
-          ['award', 'الشهادات الاحترافية', 'Professional Certifications', 'إرشادك للشهادات المناسبة لتخصصك والتسجيل فيها.', 'Guiding you to the right certifications and registration.']
+          ['award', 'الشهادات الاحترافية', 'Professional Certifications', 'إرشادك للشهادات المناسبة لتخصصك والتسجيل فيها.', 'Guiding you to the right certifications and registration.'],
+          ['book-open-check', 'التسجيل في دورات دروب وأثرائي والتطوع', 'Doroob, Athrai & Volunteering Courses', 'التسجيل في دورات دروب وأثرائي والفرص التطوعية.', 'Registering in Doroob and Athrai courses and volunteering opportunities.']
         ]
       },
       {

@@ -2,31 +2,104 @@
 
 > كل خدماتك .. في مكان واحد
 
-Bilingual (Arabic / English) website for a Saudi services company offering **real estate services**, **government transaction services (تعقيب)** and **student services**.
+موقع ثنائي اللغة (عربي / English) لشركة سعودية تقدّم **خدمات عقارية** و**خدمات عامة وتعقيب** و**خدمات طلابية**، مع **حسابات عملاء** و**سوق عقار (عرض وطلب)** و**حجز مواعيد** و**لوحة تحكم كاملة**.
 
-## Pages
+لا يحتاج `npm install` — الخادم Node.js بدون أي مكتبات خارجية.
 
-| File | Page |
+## التشغيل
+
+```bash
+node server/index.js          # أو: npm start
+# الموقع:        http://localhost:3000
+# لوحة التحكم:   http://localhost:3000/admin.html
+```
+
+عند أول تشغيل يُنشأ حساب المدير ويُطبع في الشاشة:
+
+| | |
 |---|---|
-| `index.html` | الرئيسية — opening logo animation + the three main sections (عقار · خدمات عامة · خدمات طلابية) |
-| `real-estate.html` | العقار — choose إيجار / بيع / استثمار → property type → market, plus supporting real estate services |
-| `market.html` | سوق العقار (عرض وطلب) — filterable board of offers & requests; customers post via a form that sends to WhatsApp |
-| `general-services.html` | الخدمات العامة — every general service in categories (government transactions, delivery, utilities…) |
-| `students.html` | الخدمات الطلابية |
-| `taqib.html` | Redirects to `general-services.html` (kept for old links) |
-| `about.html` | من نحن |
-| `contact.html` | تواصل معنا |
+| الجوال | `0552408287` (أو `ADMIN_PHONE`) |
+| كلمة المرور | تُولَّد عشوائياً وتُطبع مرة واحدة (أو `ADMIN_PASSWORD`) |
 
-## Editing
+> غيّر كلمة المرور من `account.html#profile` بعد أول دخول.
 
-- **Contact details** (phone, WhatsApp, email, address, hours, cities): top of `assets/js/data.js`.
-- **Services catalog** (all sections and services, AR/EN): `assets/js/data.js`.
-- **Property market** (sections, property types and the published ads): `assets/js/listings.js`. Ads customers send arrive on WhatsApp; after review, add them to `listings` there. Delete the ads marked `sample: true` before going live.
-- **Styles / brand colors**: `assets/css/style.css`.
-- **Behaviour** (language switch, service search, request form → WhatsApp, animations): `assets/js/main.js`.
+متطلبات: **Node 18 أو أحدث**.
 
-Static site — no build step. Open `index.html` or host on any static host (GitHub Pages).
+### متغيرات البيئة (اختيارية)
 
-> Phone/WhatsApp is 0552408287. The email and address are still placeholders, the homepage testimonials and the market ads marked `sample` are samples. Replace them before going live.
+| المتغير | الوظيفة |
+|---|---|
+| `PORT` / `HOST` | المنفذ (3000) والعنوان |
+| `DATA_DIR` | مكان حفظ البيانات (افتراضي `./data`) — **ضعه على قرص دائم** |
+| `ADMIN_PHONE` / `ADMIN_PASSWORD` / `ADMIN_NAME` | بيانات المدير الأول |
+| `PUBLIC_URL` | رابط الموقع الكامل (لـ sitemap وروابط المقالات) مثل `https://example.com` |
+| `TRUST_PROXY=1` | عند وجود Nginx / Cloudflare / Render (لقراءة IP الحقيقي) |
+| `COOKIE_SECURE=1` | لإجبار الكوكيز على HTTPS |
 
+## ماذا يوجد في الموقع
+
+### للعميل
+- **العقار**: اختر القسم (إيجار / بيع / استثمار) ← **عرض عقار** أو **طلب عقار** ← نوع العقار.
+- **أضف عرضك**: نموذج مواصفات كامل + رفع صور + رقم ترخيص الإعلان. يُراجع من الإدارة قبل النشر (يمكن تغيير ذلك من الإعدادات).
+- **اطلب عقارك**: كل المتطلبات (غرف النوم، دورات المياه، مجلس رجال، مجلس نساء، مقلط، غرفة خادمة/سائق، الأدوار، الواجهة، المرافق، الميزانية، الأحياء، الاستعجال…). تتغير الحقول حسب نوع العقار (فيلا/شقة/أرض/عمارة/محل/شراكة). يصل الطلب إلى **قسم الطلبات في لوحة التحكم**، ويمكن للعميل اختيار نشره علناً في السوق.
+- **الخدمات (422 خدمة)**: مرتبة حسب الجهة (الجوازات، أبشر، الأحوال، المرور، مكتب العمل، قوى، التأمينات، المركز السعودي للأعمال، الكهرباء، المياه، ناجز، تركة، التصديقات، الزكاة والجمارك…) + الخدمات الطلابية.
+- **حجز موعد في كل خدمة**: كل خدمة فيها تبويب «اطلب الخدمة» و«احجز موعد» (اختيار اليوم والوقت، مع سعة لكل وقت).
+- **كل الطلبات تُرسل وتُحفظ على الموقع** (وليس واتساب). زر واتساب العائم والاتصال يبقيان وسيلة تواصل فقط.
+- **حساب العميل**: تسجيل / دخول، «طلباتي ومواعيدي» مع تتبّع الحالة، «إعلاناتي»، بياناتي.
+- **الوثائق والتراخيص**: رخصة الإعلان العقاري، السجل التجاري، رخصة فال (رقم + تاريخ انتهاء + صورة/PDF). بعد توثيقها من الإدارة تظهر شارة **«معلن موثّق»** على إعلاناته. الملفات خاصة ولا يراها إلا صاحبها والإدارة.
+- **المدونة** `/blog` — صفحات تُولَّد من الخادم (SEO) مع `sitemap.xml` و `robots.txt`.
+
+### لوحة التحكم `/admin.html`
+| القسم | ما تفعله |
+|---|---|
+| نظرة عامة | أرقام اليوم، رسم الطلبات، أكثر الخدمات طلباً، آخر النشاطات، تنبيه صوتي عند وصول طلب جديد |
+| الطلبات | بحث وفلترة، تغيير الحالة، رسالة تظهر للعميل، ملاحظات داخلية، رد عبر واتساب، نشر طلب عقار في السوق، تصدير Excel |
+| المواعيد | جدول المواعيد حسب اليوم، تعديل الموعد |
+| الإعلانات العقارية | اعتماد / رفض (بسبب) / تمييز / تعديل / إضافة / حذف، رفع صور |
+| المستخدمون | صلاحيات (عميل / موظف / مدير)، إيقاف، كلمة مرور مؤقتة، عرض الوثائق وتوثيقها |
+| توثيق الوثائق | طابور الوثائق بانتظار التوثيق |
+| الخدمات والتصنيفات | **إنشاء خدمات وتصنيفات جديدة**، تعديل، إخفاء، ترتيب، تفعيل/إيقاف «احجز موعد» لكل خدمة |
+| المدونة | محرر مقالات (Markdown مبسّط + معاينة)، صورة رئيسية، SEO، مسودة / نشر |
+| الإعدادات | بيانات التواصل (تتغير في كل الموقع)، أيام وساعات المواعيد وسعتها، قواعد الإعلانات، Webhook للإشعارات |
+
+«موظف» يرى الطلبات والمواعيد والإعلانات والمدونة فقط؛ «مدير» يرى كل شيء.
+
+## الملفات
+
+```
+server/           الخادم (index.js, api.js, admin.js, auth.js, db.js, pages.js, seed.js, md.js, util.js, test.js)
+assets/js/        data.js (الخدمات الافتراضية)  listings.js (أنواع العقار)  propschema.js (حقول المواصفات)
+                  api.js  main.js  forms.js (النماذج)  account.js  admin.js
+*.html            الصفحات (admin.html, account.html, login.html …)
+data/             قاعدة البيانات db.json + الصور المرفوعة (لا تُرفع إلى git)
+```
+
+- **تغيير حقول مواصفات العقار** (مثل إضافة «غرفة سينما»): `assets/js/propschema.js` — أضف الحقل في `FIELDS` ثم ضعه في قسم من `LAYOUT`.
+- `data.js` و `listings.js` تُحمَّل **مرة واحدة** عند أول تشغيل. بعدها لوحة التحكم هي المرجع. لإعادة التحميل من الملفات احذف `data/db.json` (يحذف كل شيء!).
+- الإعلانات التجريبية (12) تظهر في البداية: احذفها من «نظرة عامة ← حذف الإعلانات التجريبية».
+
+## النشر
+
+الموقع لم يعد صفحات ثابتة فقط — يحتاج استضافة **Node.js** (Render، Railway، Fly.io، VPS، أو Docker):
+
+```bash
+docker build -t isc . && docker run -p 3000:3000 -v isc-data:/data -e ADMIN_PASSWORD=... -e PUBLIC_URL=https://your-domain.com isc
+```
+
+مهم:
+1. اربط `DATA_DIR` بقرص/Volume دائم، وخذ **نسخة احتياطية** منه (`db.json` + `uploads/` + `private/`).
+2. شغّل خلف HTTPS (Cloudflare / Nginx) وفعّل `TRUST_PROXY=1`.
+3. GitHub Pages لا يكفي لأنه لا يشغّل الخادم.
+
+## الأمان
+
+كلمات المرور بـ scrypt، جلسات HttpOnly + SameSite، حماية CSRF، حدّ لمحاولات الدخول والإرسال، فحص نوع الملفات المرفوعة (بالمحتوى لا بالامتداد)، الوثائق في مجلد خاص بصلاحيات، ترويسات أمان وCSP، وتهريب كل النصوص عند العرض. اختبارات تغطي ذلك: `npm test`.
+
+## حدود معروفة
+
+- لا يوجد OTP بالرسائل ولا بريد إلكتروني (يحتاجان مزوّد خدمة). نسيان كلمة المرور: المدير يعيّن كلمة مؤقتة من «المستخدمون». الإشعارات للمدير عبر اللوحة (وصوت) أو Webhook.
+- قاعدة البيانات ملف JSON مناسب لآلاف السجلات. لحجم أكبر يُنقل إلى PostgreSQL.
+- لوحة التحكم بالعربية فقط.
+
+---
 Photos: [Unsplash](https://unsplash.com/license). Icons: [Lucide](https://lucide.dev) (ISC).
