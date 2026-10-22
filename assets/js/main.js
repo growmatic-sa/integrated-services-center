@@ -455,7 +455,7 @@
         </div>
         <div class="ad-body">
           <div class="ad-meta"><span>${icon(ty.icon || 'home')} ${typeName(a.type, true)}</span><span>#${a.id}${date ? ` · ${date}` : ''}</span></div>
-          <h3>${esc(t(a.title))}</h3>
+          <h3><a href="property.html?id=${a.id}">${esc(t(a.title))}</a></h3>
           <div class="ad-loc">${icon('map-pin')} ${where}</div>
           ${specs ? `<div class="ad-specs">${specs}</div>` : ''}
           ${isVerified(a) || a.license ? `<div class="ad-trust">${isVerified(a) ? `<span class="badge-ok">${icon('badge-check')} ${T('معلن موثّق', 'Verified advertiser')}</span>` : ''}${a.license ? `<span class="badge-lic">${T('ترخيص', 'Licence')} ${esc(a.license)}</span>` : ''}</div>` : ''}

@@ -93,7 +93,7 @@ function listingPublic(l, { full = false } = {}) {
     id: l.id, kind: l.kind, deal: l.deal, type: l.type, city: l.city, district: l.district, title: l.title,
     price: l.price, per: l.per, area: l.area, rooms: l.rooms, baths: l.baths, img: images[0] || '', images,
     date: String(l.createdAt).slice(0, 10), sample: !!l.sample, featured: !!l.featured, verified: verifiedFlags(owner),
-    license: l.adLicense || '', ownerType: owner ? owner.type : '', details: l.details || {}, description: l.description || { ar: '', en: '' }
+    license: l.adLicense || '', views: l.views || 0, publishedAt: l.publishedAt || l.createdAt, ownerType: owner ? owner.type : '', details: l.details || {}, description: l.description || { ar: '', en: '' }
   };
   return o;
 }

@@ -550,46 +550,32 @@
     return rows.join('');
   }
 
-  forms.openAd = async function (id, focusInquiry) {
-    let a = M.listings.find((x) => x.id === id);
-    if (!a) return;
-    const open = (full) => {
-      const imgs = (full.images && full.images.length) ? full.images : (full.img ? [full.img] : []);
-      const ty = M.types[full.type] || {};
-      const u = A.user || {};
-      const box = showModal(`
-        ${modalHead(ty.icon || 'home', `${I.typeName(full.type, true)} · ${t(I.deal(full.deal) || {})} · #${full.id}`, esc(t(full.title)), `${icon('map-pin')} ${I.cityName(full.city)}${full.district && t(full.district) ? ' — ' + esc(t(full.district)) : ''}`)}
-        <div class="modal-body ad-detail">
-          ${imgs.length ? `<div class="ad-gallery"><img class="main" src="${esc(imgs[0].includes('/') ? imgs[0] : 'assets/img/' + imgs[0])}" alt="">${imgs.length > 1 ? `<div class="g-thumbs">${imgs.map((x, i) => `<button type="button" data-g="${i}"><img src="${esc(x.includes('/') ? x : 'assets/img/' + x)}" alt=""></button>`).join('')}</div>` : ''}</div>` : ''}
-          <div class="ad-d-price">${full.price ? `${full.kind === 'request' ? `<small>${T('الميزانية حتى', 'Budget up to')}</small> ` : ''}<b>${I.fmtNum(full.price)}</b> ${T('ريال', 'SAR')}${full.per === 'month' ? T(' / شهرياً', ' / month') : full.per === 'year' ? T(' / سنوياً', ' / year') : ''}` : T('السعر عند التواصل', 'Price on request')}</div>
-          ${(isV(full) || full.license) ? `<div class="ad-trust">${isV(full) ? `<span class="badge-ok">${icon('badge-check')} ${T('معلن موثّق', 'Verified advertiser')}</span>` : ''}${full.license ? `<span class="badge-lic">${T('رقم ترخيص الإعلان', 'Ad licence')}: ${esc(full.license)}</span>` : ''}</div>` : ''}
-          ${full.area || full.rooms || full.baths || Object.keys(full.details || {}).length ? `<h4 class="sub-h">${full.kind === 'request' ? T('المتطلبات', 'Requirements') : T('المواصفات', 'Specifications')}</h4><div class="spec-list">${full.area && !(full.details && full.details.area) ? `<div class="spec"><span>${icon('ruler')} ${T('المساحة', 'Area')}</span><b>${I.fmtNum(full.area)} ${T('م²', 'm²')}</b></div>` : ''}${specRows(full)}</div>` : ''}
-          ${full.description && t(full.description) ? `<h4 class="sub-h">${T('الوصف', 'Description')}</h4><p class="ad-desc">${esc(t(full.description))}</p>` : ''}
-          <h4 class="sub-h" id="inq">${full.kind === 'request' ? T('عندك عقار مناسب؟ راسلنا', 'Have a matching property? Contact us') : T('مهتم بهذا العقار؟ أرسل استفسارك', 'Interested? Send your inquiry')}</h4>
-          <form novalidate>
-            <div class="form-grid">
-              ${nameField(u.name)}${phoneField(u.phone)}
-              ${field('f-notes', T('رسالتك', 'Your message'), `<textarea id="f-notes" name="notes" placeholder="${T('أرغب بمعاينة العقار / معرفة التفاصيل…', 'I would like to view the property / know more…')}"></textarea>`, { full: true })}
-            </div>
-            ${formErr}
-            <div class="form-actions">
-              <button class="btn btn-gold" type="submit">${icon('send')} ${T('إرسال الاستفسار', 'Send inquiry')}</button>
-              <a class="btn btn-outline" href="${I.telLink()}">${icon('phone')} ${T('اتصل بنا', 'Call us')}</a>
-            </div>
-          </form>
-        </div>`, { wide: true });
-      $$(box, '[data-g]').forEach((b) => b.addEventListener('click', () => { $(box, '.ad-gallery .main').src = $(b, 'img').src; }));
-      const form = $(box, 'form');
-      guard(form, $(form, '[type=submit]'), async () => {
-        if (!validateForm(form)) return;
-        const v = Object.fromEntries(new FormData(form).entries());
-        const r = await A.post('/requests', { type: 'inquiry', listingId: full.id, name: v.name, phone: v.phone, notes: v.notes });
-        successView(box, { title: T('تم إرسال استفسارك', 'Inquiry sent'), ref: r.request.ref, text: T('سنتواصل معك قريباً بخصوص هذا الإعلان.', 'We will contact you shortly about this ad.') });
-      });
-      if (focusInquiry) setTimeout(() => $(box, '#inq').scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
-    };
-    const isV = (x) => !!(x.verified && (x.verified.ad || x.verified.cr || x.verified.fal));
-    open(a);
-    if (A.online) A.get('/listings/' + id).catch(() => {});   // counts the view
+  /* inquiry form shown on the property page (saved as a request, not WhatsApp) */
+  forms.mountInquiry = function (holder, full) {
+    const u = A.user || {};
+    holder.innerHTML = `
+      <form novalidate>
+        <div class="form-grid">
+          ${nameField(u.name)}${phoneField(u.phone)}
+          ${field('f-notes', T('رسالتك', 'Your message'), `<textarea id="f-notes" name="notes" placeholder="${T('أرغب بمعاينة العقار / معرفة التفاصيل…', 'I would like to view the property / know more…')}"></textarea>`, { full: true })}
+        </div>
+        ${formErr}
+        <div class="form-actions"><button class="btn btn-gold" type="submit">${icon('send')} ${T('إرسال الاستفسار', 'Send inquiry')}</button></div>
+      </form>`;
+    drawIcons();
+    const form = $(holder, 'form');
+    guard(form, $(form, '[type=submit]'), async () => {
+      if (!validateForm(form)) return;
+      const v = Object.fromEntries(new FormData(form).entries());
+      const r = await A.post('/requests', { type: 'inquiry', listingId: full.id, name: v.name, phone: v.phone, notes: v.notes });
+      holder.innerHTML = `<div class="success-view"><span class="ok-ico">${icon('circle-check')}</span><h3>${T('تم إرسال استفسارك', 'Inquiry sent')}</h3><div class="ref-box"><small>${T('رقم الطلب', 'Request number')}</small><b dir="ltr">${esc(r.request.ref)}</b></div><p>${T('سنتواصل معك قريباً بخصوص هذا الإعلان.', 'We will contact you shortly about this ad.')}</p></div>`;
+      drawIcons();
+    });
+  };
+  forms.layoutFor = layoutFor;
+
+  /* clicking an ad opens its own page with every detail */
+  forms.openAd = function (id, focusInquiry) {
+    location.href = `property.html?id=${encodeURIComponent(id)}${focusInquiry ? '#inquiry' : ''}`;
   };
 })();
