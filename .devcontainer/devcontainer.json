@@ -1,0 +1,15 @@
+{
+  "name": "Integrated Services Center (trial)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "containerEnv": {
+    "ADMIN_PHONE": "0552408287",
+    "ADMIN_PASSWORD": "Trial@12345",
+    "COOKIE_SECURE": "1",
+    "TRUST_PROXY": "1"
+  },
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": { "label": "الموقع / Website", "onAutoForward": "openBrowser" }
+  },
+  "postAttachCommand": "node server/index.js"
+}

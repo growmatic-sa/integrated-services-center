@@ -516,6 +516,8 @@
 
   // Real estate page: section (rent / sale / invest) → offer or request → property type → market
   const DEAL_WORD = { rent: { ar: 'إيجار', en: 'rent' }, sale: { ar: 'بيع', en: 'sale' }, invest: { ar: 'استثمار', en: 'investment' } };
+  // a buyer "requests to purchase" (شراء), a seller "offers for sale" (بيع)
+  const dealWord = (id, kind) => (id === 'sale' && kind === 'request' ? { ar: 'شراء', en: 'purchase' } : DEAL_WORD[id]);
   function renderDeals() {
     const root = document.getElementById('dealPicker');
     if (!root || !M) return;
@@ -550,7 +552,7 @@
       sub.innerHTML = `
         <div class="type-head">
           <span class="ico">${icon('layout-grid')}</span>
-          <div><h3>${T('اختر نوع العقار', 'Choose property type')} — <span class="accent">${cur.kind === 'offer' ? T(`عرض عقار ${DEAL_WORD[d.id].ar}`, `${DEAL_WORD[d.id].en} offers`) : T(`طلب عقار ${DEAL_WORD[d.id].ar}`, `${DEAL_WORD[d.id].en} requests`)}</span></h3>
+          <div><h3>${T('اختر نوع العقار', 'Choose property type')} — <span class="accent">${cur.kind === 'offer' ? T(`عرض عقار ${dealWord(d.id, 'offer').ar}`, `${dealWord(d.id, 'offer').en} offers`) : T(`طلب عقار ${dealWord(d.id, 'request').ar}`, `${dealWord(d.id, 'request').en} requests`)}</span></h3>
           <p>${T('اضغط على النوع لتشاهد الإعلانات المتاحة', 'Tap a type to see the available ads')}</p></div>
         </div>
         <div class="type-grid">
@@ -583,7 +585,8 @@
       const nReq = adsFor({ deal: id, kind: 'request' }).length;
       const kindCard = (k) => {
         const isOffer = k === 'offer';
-        const title = isOffer ? T(`عرض عقار ${w.ar}`, `Property offer — ${w.en}`) : T(`طلب عقار ${w.ar}`, `Property request — ${w.en}`);
+        const wk = dealWord(id, k);
+        const title = isOffer ? T(`عرض عقار ${wk.ar}`, `Property offer — ${wk.en}`) : T(`طلب عقار ${wk.ar}`, `Property request — ${wk.en}`);
         const text = isOffer ? T('عندك عقار؟ اعرضه وسيصل لمن يبحث عنه.', 'Have a property? List it and reach those looking for it.') : T('تبحث عن عقار؟ اكتب كل متطلباتك ونبحث لك.', 'Looking for one? Tell us every requirement and we search for you.');
         return `
           <div class="kind-card ${k}${cur.kind === k ? ' selected' : ''}" data-kind="${k}" tabindex="0" role="button" aria-pressed="${cur.kind === k}">
