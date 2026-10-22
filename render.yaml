@@ -1,0 +1,18 @@
+# Render Blueprint — تجربة سريعة بضغطة واحدة (الخطة المجانية: البيانات مؤقتة)
+services:
+  - type: web
+    name: integrated-services-center
+    runtime: node
+    plan: free
+    buildCommand: echo "no build"
+    startCommand: node server/index.js
+    healthCheckPath: /api/config
+    envVars:
+      - key: ADMIN_PHONE
+        value: "0552408287"
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: TRUST_PROXY
+        value: "1"
+      - key: COOKIE_SECURE
+        value: "1"
